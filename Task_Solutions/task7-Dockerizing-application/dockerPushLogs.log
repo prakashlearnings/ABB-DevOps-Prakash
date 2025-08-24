@@ -1,0 +1,22 @@
+root@LH85JBK3:/mnt/c/career/adoabb/abb/simple-node-ui# docker image ls
+REPOSITORY                                                                     TAG       IMAGE ID       CREATED         SIZE
+abbz5nv7k.azurecr.io/abb-app                                                   latest    7b7a877647e5   8 minutes ago   131MB        
+simple-node-ui                                                                 latest    7481dfdbd820   29 hours ago    131MB        
+artifactory.shs.saas.temenos.cloud/dev-dockerlocal/tss/agenttools/agenttools   1.0.0     1cc9895b990a   5 months ago    869MB        
+gb                                                                             latest    1cc9895b990a   5 months ago    869MB        
+nginx                                                                          latest    b52e0b094bc0   6 months ago    192MB        
+hello-world                                                                    latest    74cc54e27dc4   7 months ago    10.1kB       
+gcr.io/k8s-minikube/kicbase                                                    v0.0.46   e72c4cbe9b29   7 months ago    1.31GB       
+registry.k8s.io/ingress-nginx/controller                                       v1.11.3   ee44bc236803   10 months ago   293MB        
+registry.k8s.io/ingress-nginx/kube-webhook-certgen                             v1.4.4    a62eeff05ba5   10 months ago   63.8MB       
+root@LH85JBK3:/mnt/c/career/adoabb/abb/simple-node-ui# docker push abbz5nv7k.azurecr.io/abb-app:latest
+The push refers to repository [abbz5nv7k.azurecr.io/abb-app]
+536db8fa08e8: Pushed
+a8f0f9608b24: Pushed
+c9e0855c578c: Pushed
+733473fe761c: Pushed
+82140d9a70a7: Pushed
+f3b40b0cdb1c: Pushed
+0b1f26057bd0: Pushed
+08000c18d16d: Pushed
+latest: digest: sha256:a954bfe66c9c7e19e98a9a82842846a5f687fcf5a307f2475f2595d3fb747962 size: 1991

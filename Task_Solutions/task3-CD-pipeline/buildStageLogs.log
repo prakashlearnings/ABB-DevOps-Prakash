@@ -1,0 +1,618 @@
+2025-08-24T12:57:08.6227322Z ##[section]Starting: Build
+2025-08-24T12:57:10.5199100Z ##[section]Starting: Initialize job
+2025-08-24T12:57:10.5201172Z Agent name: 'abb 1'
+2025-08-24T12:57:10.5201459Z Agent machine name: '7f1d045be000000'
+2025-08-24T12:57:10.5201592Z Current agent version: '4.260.0'
+2025-08-24T12:57:10.5221146Z ##[group]Managed DevOps Pool
+2025-08-24T12:57:10.5221336Z SKU: Standard_E2as_v4
+2025-08-24T12:57:10.5221547Z Image: /subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/Providers/Microsoft.Compute/Locations/centralus/publishers/canonical/artifacttypes/vmimage/offers/ubuntu-24_04-lts/skus/server/versions/latest
+2025-08-24T12:57:10.5221752Z Image Version: 24.04.202508220
+2025-08-24T12:57:10.5221856Z IP: 10.1.0.4
+2025-08-24T12:57:10.5221981Z Interactive Mode: False
+2025-08-24T12:57:10.5222093Z Request Id: 64c7e1f4-ff99-4de8-bed5-db283be8da16
+2025-08-24T12:57:10.5222210Z Pool Name: abb
+2025-08-24T12:57:10.5222554Z Location: centralus
+2025-08-24T12:57:10.5222772Z Work Folder: /mnt/vss/_work
+2025-08-24T12:57:10.5222984Z Resource Provider: VmssResourceProvider
+2025-08-24T12:57:10.5223132Z Worker Build Version: 30380202
+2025-08-24T12:57:10.5223232Z ##[endgroup]
+2025-08-24T12:57:14.9143340Z Agent running as: 'AzDevOps'
+2025-08-24T12:57:14.9176672Z Prepare build directory.
+2025-08-24T12:57:14.9329067Z Set build variables.
+2025-08-24T12:57:14.9342823Z Download all required tasks.
+2025-08-24T12:57:14.9398388Z Downloading task: NodeTool (0.259.0)
+2025-08-24T12:57:18.5184497Z Downloading task: CmdLine (2.250.1)
+2025-08-24T12:57:19.1210518Z Downloading task: PublishTestResults (2.254.0)
+2025-08-24T12:57:20.8227586Z Downloading task: PublishBuildArtifacts (1.247.1)
+2025-08-24T12:57:21.4381748Z Downloading task: AzureCLI (2.259.1)
+2025-08-24T12:57:27.3222739Z Checking job knob settings.
+2025-08-24T12:57:27.3224599Z    Knob: DockerActionRetries = true Source: $(VSTSAGENT_DOCKER_ACTION_RETRIES) 
+2025-08-24T12:57:27.3225320Z    Knob: UseGitLongPaths = true Source: $(USE_GIT_LONG_PATHS) 
+2025-08-24T12:57:27.3226376Z    Knob: EnableIssueSourceValidation = true Source: $(ENABLE_ISSUE_SOURCE_VALIDATION) 
+2025-08-24T12:57:27.3226830Z    Knob: AgentEnablePipelineArtifactLargeChunkSize = true Source: $(AGENT_ENABLE_PIPELINEARTIFACT_LARGE_CHUNK_SIZE) 
+2025-08-24T12:57:27.3227965Z    Knob: ContinueAfterCancelProcessTreeKillAttempt = true Source: $(VSTSAGENT_CONTINUE_AFTER_CANCEL_PROCESSTREEKILL_ATTEMPT) 
+2025-08-24T12:57:27.3228322Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC) 
+2025-08-24T12:57:27.3228557Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC_LOG) 
+2025-08-24T12:57:27.3228789Z    Knob: ProcessHandlerTelemetry = true Source: $(AZP_75787_ENABLE_COLLECT) 
+2025-08-24T12:57:27.3229040Z    Knob: UseNewNodeHandlerTelemetry = True Source: $(DistributedTask.Agent.USENEWNODEHANDLERTELEMETRY) 
+2025-08-24T12:57:27.3229284Z    Knob: ProcessHandlerEnableNewLogic = true Source: $(AZP_75787_ENABLE_NEW_PH_LOGIC) 
+2025-08-24T12:57:27.3229641Z    Knob: EnableResourceMonitorDebugOutput = true Source: $(AZP_ENABLE_RESOURCE_MONITOR_DEBUG_OUTPUT) 
+2025-08-24T12:57:27.3229892Z    Knob: EnableResourceUtilizationWarnings = true Source: $(AZP_ENABLE_RESOURCE_UTILIZATION_WARNINGS) 
+2025-08-24T12:57:27.3230239Z    Knob: IgnoreVSTSTaskLib = true Source: $(AZP_AGENT_IGNORE_VSTSTASKLIB) 
+2025-08-24T12:57:27.3230457Z    Knob: FailJobWhenAgentDies = true Source: $(FAIL_JOB_WHEN_AGENT_DIES) 
+2025-08-24T12:57:27.3230745Z    Knob: CheckForTaskDeprecation = true Source: $(AZP_AGENT_CHECK_FOR_TASK_DEPRECATION) 
+2025-08-24T12:57:27.3231067Z    Knob: CheckIfTaskNodeRunnerIsDeprecated246 = True Source: $(DistributedTask.Agent.CheckIfTaskNodeRunnerIsDeprecated246) 
+2025-08-24T12:57:27.3231522Z    Knob: LogTaskNameInUserAgent = true Source: $(AZP_AGENT_LOG_TASKNAME_IN_USERAGENT) 
+2025-08-24T12:57:27.3231766Z    Knob: UseFetchFilterInCheckoutTask = true Source: $(AGENT_USE_FETCH_FILTER_IN_CHECKOUT_TASK) 
+2025-08-24T12:57:27.3232054Z    Knob: Rosetta2Warning = true Source: $(ROSETTA2_WARNING) 
+2025-08-24T12:57:27.3233242Z    Knob: UseSparseCheckoutInCheckoutTask = true Source: $(AGENT_USE_SPARSE_CHECKOUT_IN_CHECKOUT_TASK) 
+2025-08-24T12:57:27.3233588Z    Knob: AgentCDNConnectivityFailWarning = False Source: $(DistributedTask.Agent.AgentCDNConnectivityFailWarning) 
+2025-08-24T12:57:27.3233730Z Finished checking job knob settings.
+2025-08-24T12:57:27.3462707Z Start tracking orphan processes.
+2025-08-24T12:57:27.3590218Z ##[section]Finishing: Initialize job
+2025-08-24T12:57:27.3634486Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T12:57:27.3634865Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T12:57:27.3635306Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T12:57:27.3635473Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T12:57:27.3737354Z ##[section]Starting: Checkout abb@master to s
+2025-08-24T12:57:27.3824702Z ==============================================================================
+2025-08-24T12:57:27.3825446Z Task         : Get sources
+2025-08-24T12:57:27.3825698Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T12:57:27.3825903Z Version      : 1.0.0
+2025-08-24T12:57:27.3826100Z Author       : Microsoft
+2025-08-24T12:57:27.3826362Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T12:57:27.3826452Z ==============================================================================
+2025-08-24T12:57:30.3623667Z Syncing repository: abb (Git)
+2025-08-24T12:57:30.3629632Z ##[command]git version
+2025-08-24T12:57:30.3634805Z git version 2.43.0
+2025-08-24T12:57:30.3635822Z ##[command]git init "/mnt/vss/_work/1/s"
+2025-08-24T12:57:30.3638896Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-24T12:57:30.3639126Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-24T12:57:30.3639314Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-24T12:57:30.3639453Z hint: 
+2025-08-24T12:57:30.3639628Z hint: 	git config --global init.defaultBranch <name>
+2025-08-24T12:57:30.3639757Z hint: 
+2025-08-24T12:57:30.3639900Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-24T12:57:30.3640075Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-24T12:57:30.3640212Z hint: 
+2025-08-24T12:57:30.3640333Z hint: 	git branch -m <name>
+2025-08-24T12:57:30.3640657Z Initialized empty Git repository in /mnt/vss/_work/1/s/.git/
+2025-08-24T12:57:30.3641551Z ##[command]git remote add origin https://prakashlearnings108@dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T12:57:30.3645904Z ##[command]git sparse-checkout disable
+2025-08-24T12:57:30.3653361Z ##[command]git config gc.auto 0
+2025-08-24T12:57:30.3657291Z ##[command]git config core.longpaths true
+2025-08-24T12:57:30.3661532Z ##[command]git config --get-all http.https://prakashlearnings108@dev.azure.com/prakashlearnings108/abb/_git/abb.extraheader
+2025-08-24T12:57:30.3666006Z ##[command]git config --get-all http.extraheader
+2025-08-24T12:57:30.3671224Z ##[command]git config --get-regexp .*extraheader
+2025-08-24T12:57:30.3675752Z ##[command]git config --get-all http.proxy
+2025-08-24T12:57:30.3680326Z ##[command]git config http.version HTTP/1.1
+2025-08-24T12:57:30.3690335Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +80c8cc755c79e7fa9164d8cbd213bbec666ed979:refs/remotes/origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T12:57:30.3696823Z remote: Azure Repos        
+2025-08-24T12:57:30.3697148Z remote: We noticed you're using an older version of Git. For the best experience, upgrade to a newer version.        
+2025-08-24T12:57:30.3697474Z remote: 
+2025-08-24T12:57:30.3697715Z remote: Found 38 objects to send. (3 ms)        
+2025-08-24T12:57:30.3698030Z From https://dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T12:57:30.3698445Z  * [new ref]         80c8cc755c79e7fa9164d8cbd213bbec666ed979 -> origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T12:57:32.4147157Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T12:57:32.4150770Z remote: Azure Repos        
+2025-08-24T12:57:32.4150961Z remote: We noticed you're using an older version of Git. For the best experience, upgrade to a newer version.        
+2025-08-24T12:57:32.4151124Z remote: 
+2025-08-24T12:57:32.4151257Z remote: Found 0 objects to send. (0 ms)        
+2025-08-24T12:57:32.4151473Z From https://dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T12:57:32.4152000Z  * branch            80c8cc755c79e7fa9164d8cbd213bbec666ed979 -> FETCH_HEAD
+2025-08-24T12:57:34.2989365Z ##[command]git checkout --progress --force refs/remotes/origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T12:57:34.2995551Z Note: switching to 'refs/remotes/origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979'.
+2025-08-24T12:57:34.2995748Z 
+2025-08-24T12:57:34.2996010Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-08-24T12:57:34.2996380Z changes and commit them, and you can discard any commits you make in this
+2025-08-24T12:57:34.2996736Z state without impacting any branches by switching back to a branch.
+2025-08-24T12:57:34.2996883Z 
+2025-08-24T12:57:34.2997155Z If you want to create a new branch to retain commits you create, you may
+2025-08-24T12:57:34.2997479Z do so (now or later) by using -c with the switch command. Example:
+2025-08-24T12:57:34.2997610Z 
+2025-08-24T12:57:34.2997834Z   git switch -c <new-branch-name>
+2025-08-24T12:57:34.2997932Z 
+2025-08-24T12:57:34.2998923Z Or undo this operation with:
+2025-08-24T12:57:34.2999034Z 
+2025-08-24T12:57:34.2999229Z   git switch -
+2025-08-24T12:57:34.2999313Z 
+2025-08-24T12:57:34.2999566Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-08-24T12:57:34.2999730Z 
+2025-08-24T12:57:34.2999958Z HEAD is now at 80c8cc7 multi stage CI/CD
+2025-08-24T12:57:34.3040220Z ##[section]Finishing: Checkout abb@master to s
+2025-08-24T12:57:34.3061119Z ##[section]Starting: Use Node.js 18
+2025-08-24T12:57:34.3065862Z ==============================================================================
+2025-08-24T12:57:34.3065952Z Task         : Node.js tool installer
+2025-08-24T12:57:34.3066016Z Description  : Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
+2025-08-24T12:57:34.3066106Z Version      : 0.259.0
+2025-08-24T12:57:34.3066159Z Author       : Microsoft Corporation
+2025-08-24T12:57:34.3066222Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/tool/node-js
+2025-08-24T12:57:34.3066296Z ==============================================================================
+2025-08-24T12:57:38.2156480Z Aquiring Node called
+2025-08-24T12:57:38.2156768Z Retry count on download fails: 5 Retry delay: 1000ms
+2025-08-24T12:57:38.2172867Z Downloading: https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-x64.tar.gz
+2025-08-24T12:57:38.6743551Z Extracting archive
+2025-08-24T12:57:38.6752632Z [command]/usr/bin/tar xC /mnt/vss/_work/_temp/4633bcf9-48e7-423a-9153-a626fbec56c6 -f /mnt/vss/_work/_temp/eaf294fe-8587-48ae-b1b2-7654b84db9c9
+2025-08-24T12:57:39.7328999Z 
+2025-08-24T12:57:39.7343216Z Caching tool: node 18.20.8 x64
+2025-08-24T12:57:40.2696351Z Prepending PATH environment variable with directory: /mnt/vss/_work/_tool/node/18.20.8/x64/bin
+2025-08-24T12:57:42.4670482Z ##[section]Finishing: Use Node.js 18
+2025-08-24T12:57:42.4687302Z ##[section]Starting: Install, Lint, Test
+2025-08-24T12:57:42.4690668Z ==============================================================================
+2025-08-24T12:57:42.4690765Z Task         : Command line
+2025-08-24T12:57:42.4690816Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T12:57:42.4690910Z Version      : 2.250.1
+2025-08-24T12:57:42.4691099Z Author       : Microsoft Corporation
+2025-08-24T12:57:42.4691163Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T12:57:42.4691241Z ==============================================================================
+2025-08-24T12:57:45.4660670Z Generating script.
+2025-08-24T12:57:45.4671377Z ========================== Starting Command Output ===========================
+2025-08-24T12:57:45.4691791Z [command]/usr/bin/bash --noprofile --norc /mnt/vss/_work/_temp/271cc2d1-651a-4f5e-8db1-6710e7498a9f.sh
+2025-08-24T12:57:47.4699172Z npm warn deprecated supertest@6.3.4: Please upgrade to supertest v7.1.3+, see release notes at https://github.com/forwardemail/supertest/releases/tag/v7.1.3 - maintenance is supported by Forward Email @ https://forwardemail.net
+2025-08-24T12:57:47.6235846Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2025-08-24T12:57:48.1701965Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-08-24T12:57:48.4179075Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-08-24T12:57:48.9361597Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+2025-08-24T12:57:48.9364722Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+2025-08-24T12:57:49.1125312Z npm warn deprecated superagent@8.1.2: Please upgrade to superagent v10.2.2+, see release notes at https://github.com/forwardemail/superagent/releases/tag/v10.2.2 - maintenance is supported by Forward Email @ https://forwardemail.net
+2025-08-24T12:57:49.6994656Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2025-08-24T12:57:50.1301815Z 
+2025-08-24T12:57:50.1306223Z added 442 packages, and audited 443 packages in 5s
+2025-08-24T12:57:50.1308517Z 
+2025-08-24T12:57:50.1310806Z 70 packages are looking for funding
+2025-08-24T12:57:50.1313452Z   run `npm fund` for details
+2025-08-24T12:57:50.1324112Z 
+2025-08-24T12:57:50.1325797Z found 0 vulnerabilities
+2025-08-24T12:57:50.2993989Z 
+2025-08-24T12:57:50.2995684Z > simple-node-ui@1.0.0 lint
+2025-08-24T12:57:50.2995921Z > eslint .
+2025-08-24T12:57:50.2996010Z 
+2025-08-24T12:57:51.1403072Z 
+2025-08-24T12:57:51.1404757Z > simple-node-ui@1.0.0 test
+2025-08-24T12:57:51.1406247Z > jest --coverage --coverage --reporters=default --reporters=jest-junit
+2025-08-24T12:57:51.1407417Z 
+2025-08-24T12:57:52.2190493Z PASS tests/app.test.js
+2025-08-24T12:57:52.2197450Z   API Tests
+2025-08-24T12:57:52.2659925Z     ✓ should return the default message (45 ms)
+2025-08-24T12:57:52.2660368Z     ✓ should respond to health/live (13 ms)
+2025-08-24T12:57:52.2660561Z     ✓ should respond to health/ready (2 ms)
+2025-08-24T12:57:52.2660628Z 
+2025-08-24T12:57:52.2660792Z ----------|---------|----------|---------|---------|-------------------
+2025-08-24T12:57:52.2660956Z File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+2025-08-24T12:57:52.2661113Z ----------|---------|----------|---------|---------|-------------------
+2025-08-24T12:57:52.2661267Z All files |    87.5 |    83.33 |      75 |    92.3 |                   
+2025-08-24T12:57:52.2661399Z  app.js   |    87.5 |    83.33 |      75 |    92.3 | 22                
+2025-08-24T12:57:52.2661553Z ----------|---------|----------|---------|---------|-------------------
+2025-08-24T12:57:52.2661960Z Test Suites: 1 passed, 1 total
+2025-08-24T12:57:52.2662093Z Tests:       3 passed, 3 total
+2025-08-24T12:57:52.2662214Z Snapshots:   0 total
+2025-08-24T12:57:52.2662460Z Time:        0.72 s
+2025-08-24T12:57:52.2662578Z Ran all test suites.
+2025-08-24T12:57:52.3398693Z 
+2025-08-24T12:57:52.3466903Z ##[section]Finishing: Install, Lint, Test
+2025-08-24T12:57:52.3487498Z ##[section]Starting: Publish Test Results to ADO
+2025-08-24T12:57:52.3491659Z ==============================================================================
+2025-08-24T12:57:52.3491755Z Task         : Publish Test Results
+2025-08-24T12:57:52.3491809Z Description  : Publish test results to Azure Pipelines
+2025-08-24T12:57:52.3491883Z Version      : 2.254.0
+2025-08-24T12:57:52.3491932Z Author       : Microsoft Corporation
+2025-08-24T12:57:52.3492002Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/test/publish-test-results
+2025-08-24T12:57:52.3492084Z ==============================================================================
+2025-08-24T12:58:05.5192973Z Result Attachments will be stored in LogStore
+2025-08-24T12:58:05.7634038Z Run Attachments will be stored in LogStore
+2025-08-24T12:58:07.4695786Z Publishing test results to test run '7'.
+2025-08-24T12:58:07.4708052Z TestResults To Publish 3, Test run id:7
+2025-08-24T12:58:07.4732555Z Test results publishing 3, remaining: 0. Test run id: 7
+2025-08-24T12:58:07.8967833Z ##[section]Async Command Start: Publish test results
+2025-08-24T12:58:09.9702177Z Published Test Run : https://dev.azure.com/prakashlearnings108/abb/_TestManagement/Runs?runId=7&_a=runCharts
+2025-08-24T12:58:10.2377381Z ##[section]Async Command End: Publish test results
+2025-08-24T12:58:10.2378286Z ##[section]Finishing: Publish Test Results to ADO
+2025-08-24T12:58:10.2395539Z ##[section]Starting: Publish Test Report Artifact
+2025-08-24T12:58:10.2399133Z ==============================================================================
+2025-08-24T12:58:10.2399221Z Task         : Publish build artifacts
+2025-08-24T12:58:10.2399284Z Description  : Publish build artifacts to Azure Pipelines or a Windows file share
+2025-08-24T12:58:10.2399363Z Version      : 1.247.1
+2025-08-24T12:58:10.2399419Z Author       : Microsoft Corporation
+2025-08-24T12:58:10.2399477Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/publish-build-artifacts
+2025-08-24T12:58:10.2399566Z ==============================================================================
+2025-08-24T12:58:18.9962810Z ##[section]Async Command Start: Upload Artifact
+2025-08-24T12:58:18.9963433Z Uploading 1 files
+2025-08-24T12:58:19.9967068Z Using default max parallelism.
+2025-08-24T12:58:19.9967418Z Creating dedup client:
+2025-08-24T12:58:19.9967652Z  - Max dedup parallelism: 192
+2025-08-24T12:58:19.9967978Z  - Using blobstore domain: 0
+2025-08-24T12:58:19.9968139Z  - Using redirect timeout: 
+2025-08-24T12:58:19.9968287Z  - Hash type: Dedup64K
+2025-08-24T12:58:19.9968431Z Building file tree
+2025-08-24T12:58:19.9968579Z Uploaded 0 out of 706 bytes.
+2025-08-24T12:58:21.4968330Z Uploaded 706 out of 706 bytes.
+2025-08-24T12:58:21.4968736Z Associating files
+2025-08-24T12:58:21.4968988Z Total files: 1 ---- Associated files: 0 (0%)
+2025-08-24T12:58:21.9969232Z File upload succeed.
+2025-08-24T12:58:21.9969685Z Upload '/mnt/vss/_work/1/s/simple-node-ui/junit.xml' to file container: '#/75821155/TestResults'
+2025-08-24T12:58:22.1440865Z Associated artifact 6 with build 25
+2025-08-24T12:58:22.1441033Z ##[section]Async Command End: Upload Artifact
+2025-08-24T12:58:22.1442225Z ##[section]Finishing: Publish Test Report Artifact
+2025-08-24T12:58:22.1471995Z ##[section]Starting: Install Azure CLI 2.55.0
+2025-08-24T12:58:22.1478022Z ==============================================================================
+2025-08-24T12:58:22.1478182Z Task         : Command line
+2025-08-24T12:58:22.1478282Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T12:58:22.1478434Z Version      : 2.250.1
+2025-08-24T12:58:22.1478531Z Author       : Microsoft Corporation
+2025-08-24T12:58:22.1478633Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T12:58:22.1478787Z ==============================================================================
+2025-08-24T12:58:24.2936146Z Generating script.
+2025-08-24T12:58:24.2948142Z ========================== Starting Command Output ===========================
+2025-08-24T12:58:24.2970483Z [command]/usr/bin/bash --noprofile --norc /mnt/vss/_work/_temp/90c870fc-7a23-4912-a236-63b2e913e6bf.sh
+2025-08-24T12:58:24.6373883Z Hit:1 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-08-24T12:58:24.6383242Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-08-24T12:58:24.6383903Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-08-24T12:58:24.6385358Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-08-24T12:58:25.8650847Z Reading package lists...
+2025-08-24T12:58:25.8893568Z Reading package lists...
+2025-08-24T12:58:26.0819225Z Building dependency tree...
+2025-08-24T12:58:26.0824855Z Reading state information...
+2025-08-24T12:58:26.2468967Z ca-certificates is already the newest version (20240203).
+2025-08-24T12:58:26.2472868Z curl is already the newest version (8.5.0-2ubuntu10.6).
+2025-08-24T12:58:26.2474420Z curl set to manually installed.
+2025-08-24T12:58:26.2474905Z gnupg is already the newest version (2.4.4-2ubuntu17.3).
+2025-08-24T12:58:26.2479582Z gnupg set to manually installed.
+2025-08-24T12:58:26.2480068Z lsb-release is already the newest version (12.0-2).
+2025-08-24T12:58:26.2480504Z lsb-release set to manually installed.
+2025-08-24T12:58:26.2486231Z The following NEW packages will be installed:
+2025-08-24T12:58:26.2495535Z   apt-transport-https
+2025-08-24T12:58:26.2717192Z 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2025-08-24T12:58:26.2722068Z Need to get 3970 B of archives.
+2025-08-24T12:58:26.2723735Z After this operation, 36.9 kB of additional disk space will be used.
+2025-08-24T12:58:26.2724221Z Get:1 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 apt-transport-https all 2.8.3 [3970 B]
+2025-08-24T12:58:26.4865491Z Fetched 3970 B in 0s (248 kB/s)
+2025-08-24T12:58:26.5020823Z Selecting previously unselected package apt-transport-https.
+2025-08-24T12:58:26.5051943Z (Reading database ... 
+2025-08-24T12:58:26.5055766Z (Reading database ... 5%
+2025-08-24T12:58:26.5059388Z (Reading database ... 10%
+2025-08-24T12:58:26.5063095Z (Reading database ... 15%
+2025-08-24T12:58:26.5068179Z (Reading database ... 20%
+2025-08-24T12:58:26.5071589Z (Reading database ... 25%
+2025-08-24T12:58:26.5075349Z (Reading database ... 30%
+2025-08-24T12:58:26.5078939Z (Reading database ... 35%
+2025-08-24T12:58:26.5081228Z (Reading database ... 40%
+2025-08-24T12:58:26.5082721Z (Reading database ... 45%
+2025-08-24T12:58:26.5083863Z (Reading database ... 50%
+2025-08-24T12:58:26.5165146Z (Reading database ... 55%
+2025-08-24T12:58:26.5184455Z (Reading database ... 60%
+2025-08-24T12:58:26.5193925Z (Reading database ... 65%
+2025-08-24T12:58:26.5214262Z (Reading database ... 70%
+2025-08-24T12:58:26.5234139Z (Reading database ... 75%
+2025-08-24T12:58:26.5249133Z (Reading database ... 80%
+2025-08-24T12:58:26.5260612Z (Reading database ... 85%
+2025-08-24T12:58:26.5271247Z (Reading database ... 90%
+2025-08-24T12:58:26.5279860Z (Reading database ... 95%
+2025-08-24T12:58:26.5280344Z (Reading database ... 100%
+2025-08-24T12:58:26.5282609Z (Reading database ... 68220 files and directories currently installed.)
+2025-08-24T12:58:26.5299370Z Preparing to unpack .../apt-transport-https_2.8.3_all.deb ...
+2025-08-24T12:58:26.5313182Z Unpacking apt-transport-https (2.8.3) ...
+2025-08-24T12:58:26.5558158Z Setting up apt-transport-https (2.8.3) ...
+2025-08-24T12:58:27.1773457Z 
+2025-08-24T12:58:27.1774221Z Running kernel seems to be up-to-date.
+2025-08-24T12:58:27.1777508Z 
+2025-08-24T12:58:27.1777988Z No services need to be restarted.
+2025-08-24T12:58:27.1778265Z 
+2025-08-24T12:58:27.1779523Z No containers need to be restarted.
+2025-08-24T12:58:27.1779784Z 
+2025-08-24T12:58:27.1780109Z No user sessions are running outdated binaries.
+2025-08-24T12:58:27.1780306Z 
+2025-08-24T12:58:27.1780690Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-08-24T12:58:28.3560930Z Types: deb
+2025-08-24T12:58:28.3561702Z URIs: https://packages.microsoft.com/repos/azure-cli/
+2025-08-24T12:58:28.3562300Z Suites: noble
+2025-08-24T12:58:28.3566795Z Components: main
+2025-08-24T12:58:28.3567029Z Architectures: amd64
+2025-08-24T12:58:28.3567292Z Signed-by: /etc/apt/keyrings/microsoft.gpg
+2025-08-24T12:58:28.4549096Z Hit:1 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-08-24T12:58:28.4576432Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-08-24T12:58:28.4576788Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-08-24T12:58:28.4577118Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-08-24T12:58:28.5500622Z Get:5 https://packages.microsoft.com/repos/azure-cli noble InRelease [3564 B]
+2025-08-24T12:58:28.8353224Z Get:6 https://packages.microsoft.com/repos/azure-cli noble/main amd64 Packages [1497 B]
+2025-08-24T12:58:28.9743175Z Fetched 5061 B in 0s (11.2 kB/s)
+2025-08-24T12:58:29.7823566Z Reading package lists...
+2025-08-24T12:58:29.8074119Z Reading package lists...
+2025-08-24T12:58:29.9763465Z Building dependency tree...
+2025-08-24T12:58:29.9767998Z Reading state information...
+2025-08-24T12:58:30.1426078Z The following NEW packages will be installed:
+2025-08-24T12:58:30.1431669Z   azure-cli
+2025-08-24T12:58:30.4317116Z 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2025-08-24T12:58:30.4317542Z Need to get 53.9 MB of archives.
+2025-08-24T12:58:30.4317900Z After this operation, 630 MB of additional disk space will be used.
+2025-08-24T12:58:30.4318381Z Get:1 https://packages.microsoft.com/repos/azure-cli noble/main amd64 azure-cli amd64 2.76.0-1~noble [53.9 MB]
+2025-08-24T12:58:31.9905830Z Fetched 53.9 MB in 2s (33.3 MB/s)
+2025-08-24T12:58:32.0160020Z Selecting previously unselected package azure-cli.
+2025-08-24T12:58:32.0191607Z (Reading database ... 
+2025-08-24T12:58:32.0192558Z (Reading database ... 5%
+2025-08-24T12:58:32.0193759Z (Reading database ... 10%
+2025-08-24T12:58:32.0194194Z (Reading database ... 15%
+2025-08-24T12:58:32.0195543Z (Reading database ... 20%
+2025-08-24T12:58:32.0195782Z (Reading database ... 25%
+2025-08-24T12:58:32.0196039Z (Reading database ... 30%
+2025-08-24T12:58:32.0196264Z (Reading database ... 35%
+2025-08-24T12:58:32.0196491Z (Reading database ... 40%
+2025-08-24T12:58:32.0196714Z (Reading database ... 45%
+2025-08-24T12:58:32.0203624Z (Reading database ... 50%
+2025-08-24T12:58:32.0292548Z (Reading database ... 55%
+2025-08-24T12:58:32.0309964Z (Reading database ... 60%
+2025-08-24T12:58:32.0319436Z (Reading database ... 65%
+2025-08-24T12:58:32.0338915Z (Reading database ... 70%
+2025-08-24T12:58:32.0358153Z (Reading database ... 75%
+2025-08-24T12:58:32.0372275Z (Reading database ... 80%
+2025-08-24T12:58:32.0384530Z (Reading database ... 85%
+2025-08-24T12:58:32.0394206Z (Reading database ... 90%
+2025-08-24T12:58:32.0402145Z (Reading database ... 95%
+2025-08-24T12:58:32.0404149Z (Reading database ... 100%
+2025-08-24T12:58:32.0404404Z (Reading database ... 68224 files and directories currently installed.)
+2025-08-24T12:58:32.0420459Z Preparing to unpack .../azure-cli_2.76.0-1~noble_amd64.deb ...
+2025-08-24T12:58:32.0432097Z Unpacking azure-cli (2.76.0-1~noble) ...
+2025-08-24T12:58:41.3963421Z Setting up azure-cli (2.76.0-1~noble) ...
+2025-08-24T12:58:42.0309772Z 
+2025-08-24T12:58:42.0310308Z Running kernel seems to be up-to-date.
+2025-08-24T12:58:42.0310431Z 
+2025-08-24T12:58:42.0310660Z No services need to be restarted.
+2025-08-24T12:58:42.0310893Z 
+2025-08-24T12:58:42.0312100Z No containers need to be restarted.
+2025-08-24T12:58:42.0312776Z 
+2025-08-24T12:58:42.0314066Z No user sessions are running outdated binaries.
+2025-08-24T12:58:42.0314383Z 
+2025-08-24T12:58:42.0314752Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-08-24T12:58:43.4625707Z azure-cli                         2.76.0
+2025-08-24T12:58:43.4626312Z 
+2025-08-24T12:58:43.4626669Z core                              2.76.0
+2025-08-24T12:58:43.4626899Z telemetry                          1.1.0
+2025-08-24T12:58:43.4626984Z 
+2025-08-24T12:58:43.4627177Z Dependencies:
+2025-08-24T12:58:43.4627584Z msal                            1.33.0b1
+2025-08-24T12:58:43.4627802Z azure-mgmt-resource               23.3.0
+2025-08-24T12:58:43.4627906Z 
+2025-08-24T12:58:43.4628120Z Python location '/opt/az/bin/python3'
+2025-08-24T12:58:43.4628362Z Config directory '/home/AzDevOps/.azure'
+2025-08-24T12:58:43.4628629Z Extensions directory '/home/AzDevOps/.azure/cliextensions'
+2025-08-24T12:58:43.4628750Z 
+2025-08-24T12:58:43.4629022Z Python (Linux) 3.12.10 (main, Jul 29 2025, 09:28:48) [GCC 13.3.0]
+2025-08-24T12:58:43.4629171Z 
+2025-08-24T12:58:43.4629392Z Legal docs and information: aka.ms/AzureCliLegal
+2025-08-24T12:58:43.4629502Z 
+2025-08-24T12:58:43.4629574Z 
+2025-08-24T12:58:43.4629767Z Your CLI is up-to-date.
+2025-08-24T12:58:43.5236403Z 
+2025-08-24T12:58:43.5344774Z ##[section]Finishing: Install Azure CLI 2.55.0
+2025-08-24T12:58:43.5386754Z ##[section]Starting: AzureCLI
+2025-08-24T12:58:43.5413274Z ==============================================================================
+2025-08-24T12:58:43.5413448Z Task         : Azure CLI
+2025-08-24T12:58:43.5413558Z Description  : Run Azure CLI commands against an Azure subscription in a PowerShell Core/Shell script when running on Linux agent or PowerShell/PowerShell Core/Batch script when running on Windows agent.
+2025-08-24T12:58:43.5413828Z Version      : 2.259.1
+2025-08-24T12:58:43.5413925Z Author       : Microsoft Corporation
+2025-08-24T12:58:43.5414053Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli
+2025-08-24T12:58:43.5414202Z ==============================================================================
+2025-08-24T12:58:45.9109062Z [command]/usr/bin/az --version
+2025-08-24T12:58:47.2348438Z azure-cli                         2.76.0
+2025-08-24T12:58:47.2348571Z 
+2025-08-24T12:58:47.2348833Z core                              2.76.0
+2025-08-24T12:58:47.2349060Z telemetry                          1.1.0
+2025-08-24T12:58:47.2349148Z 
+2025-08-24T12:58:47.2349350Z Dependencies:
+2025-08-24T12:58:47.2349568Z msal                            1.33.0b1
+2025-08-24T12:58:47.2349810Z azure-mgmt-resource               23.3.0
+2025-08-24T12:58:47.2349918Z 
+2025-08-24T12:58:47.2350146Z Python location '/opt/az/bin/python3'
+2025-08-24T12:58:47.2350414Z Config directory '/home/AzDevOps/.azure'
+2025-08-24T12:58:47.2350709Z Extensions directory '/home/AzDevOps/.azure/cliextensions'
+2025-08-24T12:58:47.2350855Z 
+2025-08-24T12:58:47.2351161Z Python (Linux) 3.12.10 (main, Jul 29 2025, 09:28:48) [GCC 13.3.0]
+2025-08-24T12:58:47.2351319Z 
+2025-08-24T12:58:47.2351554Z Legal docs and information: aka.ms/AzureCliLegal
+2025-08-24T12:58:47.2351675Z 
+2025-08-24T12:58:47.2351745Z 
+2025-08-24T12:58:47.2351947Z Your CLI is up-to-date.
+2025-08-24T12:58:47.2354482Z Setting AZURE_CONFIG_DIR env variable to: /mnt/vss/_work/_temp/.azclitask
+2025-08-24T12:58:47.2355409Z Setting active cloud to: AzureCloud
+2025-08-24T12:58:47.2360820Z [command]/usr/bin/az cloud set -n AzureCloud
+2025-08-24T12:58:50.2349135Z [command]/usr/bin/az login --service-principal -u *** --tenant e403387f-72c7-4892-a16c-908606b227f3 --allow-no-subscriptions --federated-token ***
+2025-08-24T12:58:51.9299593Z [
+2025-08-24T12:58:51.9299817Z   {
+2025-08-24T12:58:51.9300031Z     "cloudName": "AzureCloud",
+2025-08-24T12:58:51.9300299Z     "homeTenantId": "e403387f-72c7-4892-a16c-908606b227f3",
+2025-08-24T12:58:51.9300597Z     "id": "5b5cc1d1-0e3a-4fc9-a2bf-de455533e388",
+2025-08-24T12:58:51.9300841Z     "isDefault": true,
+2025-08-24T12:58:51.9301060Z     "managedByTenants": [],
+2025-08-24T12:58:51.9301276Z     "name": "a1checkcost",
+2025-08-24T12:58:51.9301489Z     "state": "Enabled",
+2025-08-24T12:58:51.9301731Z     "tenantId": "e403387f-72c7-4892-a16c-908606b227f3",
+2025-08-24T12:58:51.9301971Z     "user": {
+2025-08-24T12:58:51.9302559Z       "name": "***",
+2025-08-24T12:58:51.9302831Z       "type": "servicePrincipal"
+2025-08-24T12:58:51.9303041Z     }
+2025-08-24T12:58:51.9303220Z   }
+2025-08-24T12:58:51.9303395Z ]
+2025-08-24T12:58:51.9340962Z [command]/usr/bin/az account set --subscription 5b5cc1d1-0e3a-4fc9-a2bf-de455533e388
+2025-08-24T12:58:52.3189232Z [command]/usr/bin/bash /mnt/vss/_work/_temp/azureclitaskscript1756040325906.sh
+2025-08-24T12:58:53.8832566Z WARNING: Packing source code into tar to upload...
+2025-08-24T12:58:54.2951518Z WARNING: Uploading archived source code from '/tmp/build_archive_443d58a1d84b4669bea5d692dc1f1897.tar.gz'...
+2025-08-24T12:58:55.4221475Z WARNING: Sending context (70.304 KiB) to registry: abbz5nv7k...
+2025-08-24T12:58:55.7580788Z WARNING: Queued a build with ID: ca3
+2025-08-24T12:58:55.7581591Z WARNING: Waiting for an agent...
+2025-08-24T12:58:56.9449535Z 2025/08/24 12:58:56 Downloading source code...
+2025-08-24T12:58:59.8214554Z 2025/08/24 12:58:56 Finished downloading source code
+2025-08-24T12:58:59.8215356Z 2025/08/24 12:58:57 Using acb_vol_d9b44c91-49f6-47da-b520-248e53468a77 as the home volume
+2025-08-24T12:58:59.8215687Z 2025/08/24 12:58:57 Setting up Docker configuration...
+2025-08-24T12:58:59.8215981Z 2025/08/24 12:58:57 Successfully set up Docker configuration
+2025-08-24T12:58:59.8216290Z 2025/08/24 12:58:57 Logging in to registry: abbz5nv7k.azurecr.io
+2025-08-24T12:58:59.8216592Z 2025/08/24 12:58:58 Successfully logged into abbz5nv7k.azurecr.io
+2025-08-24T12:58:59.8216932Z 2025/08/24 12:58:58 Executing step ID: build. Timeout(sec): 28800, Working directory: '', Network: ''
+2025-08-24T12:58:59.8217260Z 2025/08/24 12:58:58 Scanning for dependencies...
+2025-08-24T12:58:59.8217539Z 2025/08/24 12:58:58 Successfully scanned dependencies
+2025-08-24T12:58:59.8217822Z 2025/08/24 12:58:58 Launching container with name: build
+2025-08-24T12:58:59.8218097Z Sending build context to Docker daemon  302.1kB
+2025-08-24T12:58:59.8218213Z 
+2025-08-24T12:58:59.8218295Z 
+2025-08-24T12:59:02.3976233Z Step 1/7 : FROM node:18-alpine
+2025-08-24T12:59:02.3977089Z 18-alpine: Pulling from library/node
+2025-08-24T12:59:02.3978844Z f18232174bc9: Pulling fs layer
+2025-08-24T12:59:02.3979204Z dd71dde834b5: Pulling fs layer
+2025-08-24T12:59:02.3979554Z 1e5a4c89cee5: Pulling fs layer
+2025-08-24T12:59:02.3979901Z 25ff2da83641: Pulling fs layer
+2025-08-24T12:59:02.3980222Z 25ff2da83641: Waiting
+2025-08-24T12:59:02.3980505Z 1e5a4c89cee5: Verifying Checksum
+2025-08-24T12:59:02.3980810Z 1e5a4c89cee5: Download complete
+2025-08-24T12:59:02.3981115Z f18232174bc9: Download complete
+2025-08-24T12:59:02.3981411Z 25ff2da83641: Verifying Checksum
+2025-08-24T12:59:02.3981741Z 25ff2da83641: Download complete
+2025-08-24T12:59:02.3982073Z f18232174bc9: Pull complete
+2025-08-24T12:59:02.3982611Z dd71dde834b5: Download complete
+2025-08-24T12:59:02.3982889Z dd71dde834b5: Pull complete
+2025-08-24T12:59:07.0111352Z 1e5a4c89cee5: Pull complete
+2025-08-24T12:59:07.0113412Z 25ff2da83641: Pull complete
+2025-08-24T12:59:07.0113907Z Digest: sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-08-24T12:59:07.0114445Z Status: Downloaded newer image for node:18-alpine
+2025-08-24T12:59:07.0114823Z  ---> ee77c6cd7c18
+2025-08-24T12:59:07.0115159Z Step 2/7 : WORKDIR /app
+2025-08-24T12:59:07.0115509Z  ---> Running in 5fb4749cf791
+2025-08-24T12:59:07.0115908Z Removing intermediate container 5fb4749cf791
+2025-08-24T12:59:07.0116281Z  ---> 336a4ce3a20a
+2025-08-24T12:59:07.0116568Z Step 3/7 : COPY package*.json ./
+2025-08-24T12:59:07.0116854Z  ---> 4c099ac9dd87
+2025-08-24T12:59:07.0117156Z Step 4/7 : RUN npm install --only=production
+2025-08-24T12:59:07.0117490Z  ---> Running in 843726dc536c
+2025-08-24T12:59:07.0117894Z npm warn config only Use `--omit=dev` to omit dev dependencies from the install.
+2025-08-24T12:59:07.0118112Z 
+2025-08-24T12:59:07.0118460Z added 75 packages, and audited 76 packages in 2s
+2025-08-24T12:59:07.0118632Z 
+2025-08-24T12:59:07.0118949Z 14 packages are looking for funding
+2025-08-24T12:59:07.0119277Z   run `npm fund` for details
+2025-08-24T12:59:07.1036532Z 
+2025-08-24T12:59:07.1039719Z found 0 vulnerabilities
+2025-08-24T12:59:07.1040063Z npm notice
+2025-08-24T12:59:07.1040465Z npm notice New major version of npm available! 10.8.2 -> 11.5.2
+2025-08-24T12:59:07.1040917Z npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.5.2
+2025-08-24T12:59:07.1041590Z npm notice To update run: npm install -g npm@11.5.2
+2025-08-24T12:59:07.1041847Z npm notice
+2025-08-24T12:59:07.1042098Z Removing intermediate container 843726dc536c
+2025-08-24T12:59:07.1042562Z  ---> 6c3796e2c216
+2025-08-24T12:59:07.1042780Z Step 5/7 : COPY src ./src
+2025-08-24T12:59:07.1042985Z  ---> 0dd9671b247a
+2025-08-24T12:59:07.1043191Z Step 6/7 : EXPOSE 3000
+2025-08-24T12:59:09.5911605Z  ---> Running in 0db7f57a77ed
+2025-08-24T12:59:09.5912603Z Removing intermediate container 0db7f57a77ed
+2025-08-24T12:59:09.5916660Z  ---> f7fd20d29fcb
+2025-08-24T12:59:09.5916955Z Step 7/7 : CMD ["node", "src/app.js"]
+2025-08-24T12:59:09.5917231Z  ---> Running in 9d47fd5d6771
+2025-08-24T12:59:09.5917495Z Removing intermediate container 9d47fd5d6771
+2025-08-24T12:59:09.5918141Z  ---> e8cec0c2414a
+2025-08-24T12:59:09.5918410Z Successfully built e8cec0c2414a
+2025-08-24T12:59:09.5918712Z Successfully tagged abbz5nv7k.azurecr.io/simple-node-ui:25
+2025-08-24T12:59:12.5094796Z 2025/08/24 12:59:09 Successfully executed container: build
+2025-08-24T12:59:12.5096322Z 2025/08/24 12:59:09 Executing step ID: push. Timeout(sec): 3600, Working directory: '', Network: ''
+2025-08-24T12:59:12.5097158Z 2025/08/24 12:59:09 Pushing image: abbz5nv7k.azurecr.io/simple-node-ui:25, attempt 1
+2025-08-24T12:59:12.5097922Z The push refers to repository [abbz5nv7k.azurecr.io/simple-node-ui]
+2025-08-24T12:59:12.5098620Z 93ab7a586032: Preparing
+2025-08-24T12:59:12.5099171Z 9b4517ebaef2: Preparing
+2025-08-24T12:59:12.5101719Z 2c377165b6bf: Preparing
+2025-08-24T12:59:12.5102235Z c43bdcfa52f8: Preparing
+2025-08-24T12:59:12.5102904Z 82140d9a70a7: Preparing
+2025-08-24T12:59:12.5103426Z f3b40b0cdb1c: Preparing
+2025-08-24T12:59:12.5103960Z 0b1f26057bd0: Preparing
+2025-08-24T12:59:12.5105295Z 08000c18d16d: Preparing
+2025-08-24T12:59:12.5105516Z f3b40b0cdb1c: Waiting
+2025-08-24T12:59:12.5105733Z 0b1f26057bd0: Waiting
+2025-08-24T12:59:12.5105948Z 08000c18d16d: Waiting
+2025-08-24T12:59:12.5106175Z 82140d9a70a7: Layer already exists
+2025-08-24T12:59:12.5106424Z f3b40b0cdb1c: Layer already exists
+2025-08-24T12:59:12.5106666Z 0b1f26057bd0: Layer already exists
+2025-08-24T12:59:12.5106891Z c43bdcfa52f8: Pushed
+2025-08-24T12:59:12.5107103Z 2c377165b6bf: Pushed
+2025-08-24T12:59:12.5107313Z 93ab7a586032: Pushed
+2025-08-24T12:59:12.5107536Z 08000c18d16d: Layer already exists
+2025-08-24T12:59:12.5107761Z 9b4517ebaef2: Pushed
+2025-08-24T12:59:12.5108061Z 25: digest: sha256:b7c606d4743f21410407927e738051abae344c75b326512846b1168500ebb922 size: 1991
+2025-08-24T12:59:12.5108427Z 2025/08/24 12:59:11 Successfully pushed image: abbz5nv7k.azurecr.io/simple-node-ui:25
+2025-08-24T12:59:12.5108786Z 2025/08/24 12:59:11 Step ID: build marked as successful (elapsed time in seconds: 10.833625)
+2025-08-24T12:59:12.5109110Z 2025/08/24 12:59:11 Populating digests for step ID: build...
+2025-08-24T12:59:12.5109411Z 2025/08/24 12:59:12 Successfully populated digests for step ID: build
+2025-08-24T12:59:12.5109737Z 2025/08/24 12:59:12 Step ID: push marked as successful (elapsed time in seconds: 1.954685)
+2025-08-24T12:59:12.5110058Z 2025/08/24 12:59:12 The following dependencies were found:
+2025-08-24T12:59:12.5110307Z 2025/08/24 12:59:12 
+2025-08-24T12:59:12.5110535Z - image:
+2025-08-24T12:59:12.5110746Z     registry: abbz5nv7k.azurecr.io
+2025-08-24T12:59:12.5110977Z     repository: simple-node-ui
+2025-08-24T12:59:12.5111179Z     tag: "25"
+2025-08-24T12:59:12.5111450Z     digest: sha256:b7c606d4743f21410407927e738051abae344c75b326512846b1168500ebb922
+2025-08-24T12:59:12.5111738Z   runtime-dependency:
+2025-08-24T12:59:12.5111887Z     registry: registry.hub.docker.com
+2025-08-24T12:59:12.5112018Z     repository: library/node
+2025-08-24T12:59:12.5112136Z     tag: 18-alpine
+2025-08-24T12:59:12.5112302Z     digest: sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-08-24T12:59:12.5112715Z   git: {}
+2025-08-24T12:59:12.5112762Z 
+2025-08-24T12:59:12.5112804Z 
+2025-08-24T12:59:12.5112922Z Run ID: ca3 was successful after 16s
+2025-08-24T12:59:12.6983162Z 
+2025-08-24T12:59:12.7000145Z [command]/usr/bin/az account clear
+2025-08-24T12:59:13.1634351Z ##[section]Finishing: AzureCLI
+2025-08-24T12:59:13.1677078Z ##[section]Starting: Checkout abb@master to s
+2025-08-24T12:59:13.1680387Z ==============================================================================
+2025-08-24T12:59:13.1680560Z Task         : Get sources
+2025-08-24T12:59:13.1680662Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T12:59:13.1680817Z Version      : 1.0.0
+2025-08-24T12:59:13.1680912Z Author       : Microsoft
+2025-08-24T12:59:13.1681007Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T12:59:13.1681155Z ==============================================================================
+2025-08-24T12:59:13.4134349Z Cleaning any cached credential from repository: abb (Git)
+2025-08-24T12:59:13.4247671Z ##[section]Finishing: Checkout abb@master to s
+2025-08-24T12:59:13.4270674Z ##[section]Starting: Finalize Job
+2025-08-24T12:59:13.4284322Z Cleaning up task key
+2025-08-24T12:59:13.4285189Z Start cleaning up orphan processes.
+2025-08-24T12:59:13.4478958Z ##[section]Finishing: Finalize Job
+2025-08-24T12:59:13.4497208Z ##[section]Finishing: Build
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+hi
+GPT-4o Mini
+Hello! How can I assist you today?
+
+AITOPIA
+coin image
+10
+Upgrade
+
+
+
+Ask me anything...
+
+
+
+Powered by AITOPIA 
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Agent
+Full Page

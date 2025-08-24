@@ -1,0 +1,27 @@
+replicaCount: 2
+
+image:
+  repository: simple-node-ui # Replace with ACR later
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+app:
+  message: "Hello from Helm!"
+  name: "abbapp"
+
+resources: {}
+
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+livenessProbe:
+  initialDelaySeconds: 10
+  periodSeconds: 15
+
+secret:
+  dbPassword: ""

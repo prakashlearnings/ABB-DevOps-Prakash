@@ -1,0 +1,6 @@
+oot@LH85JBK3:/mnt/c/career/adoabb/k8s# kubectl create ns simple-node-ui
+namespace/simple-node-ui created
+root@LH85JBK3:/mnt/c/career/adoabb/k8s# kubectl apply -f deployment.yaml
+deployment.apps/simple-node-ui created
+root@LH85JBK3:/mnt/c/career/adoabb/k8s# kubectl apply -f service.yaml
+service/simple-node-ui-service created

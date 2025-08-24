@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Node UI</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #message { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Simple Node.js App</h1>
+  <button onclick="fetchMessage()">Get Message</button>
+  <p id="message"></p>
+  <script>
+    async function fetchMessage() {
+      const res = await fetch('/api/message');
+      const data = await res.json();
+      document.getElementById('message').innerText = data.message;
+    }
+  </script>
+</body>
+</html>

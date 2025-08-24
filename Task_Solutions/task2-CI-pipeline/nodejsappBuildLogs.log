@@ -1,0 +1,295 @@
+2025-08-24T07:41:31.3754805Z ##[section]Starting: Build
+2025-08-24T07:41:33.5013587Z ##[section]Starting: Initialize job
+2025-08-24T07:41:33.5015924Z Agent name: 'abb 1'
+2025-08-24T07:41:33.5016206Z Agent machine name: '401d9582e000000'
+2025-08-24T07:41:33.5016354Z Current agent version: '4.260.0'
+2025-08-24T07:41:33.5034480Z ##[group]Managed DevOps Pool
+2025-08-24T07:41:33.5034802Z SKU: Standard_E2as_v4
+2025-08-24T07:41:33.5035043Z Image: /subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/Providers/Microsoft.Compute/Locations/centralus/publishers/canonical/artifacttypes/vmimage/offers/ubuntu-24_04-lts/skus/server/versions/latest
+2025-08-24T07:41:33.5035222Z Image Version: 24.04.202508220
+2025-08-24T07:41:33.5035346Z IP: 10.1.0.4
+2025-08-24T07:41:33.5035439Z Interactive Mode: False
+2025-08-24T07:41:33.5035572Z Request Id: 9e3d34e5-8029-443c-b423-e07ca6fe74f8
+2025-08-24T07:41:33.5035702Z Pool Name: abb
+2025-08-24T07:41:33.5035779Z Location: centralus
+2025-08-24T07:41:33.5035898Z Work Folder: /mnt/vss/_work
+2025-08-24T07:41:33.5036061Z Resource Provider: VmssResourceProvider
+2025-08-24T07:41:33.5036206Z Worker Build Version: 30380202
+2025-08-24T07:41:33.5036384Z ##[endgroup]
+2025-08-24T07:41:36.3076336Z Agent running as: 'AzDevOps'
+2025-08-24T07:41:36.3110181Z Prepare build directory.
+2025-08-24T07:41:36.3254656Z Set build variables.
+2025-08-24T07:41:36.3267191Z Download all required tasks.
+2025-08-24T07:41:36.3318368Z Downloading task: NodeTool (0.259.0)
+2025-08-24T07:41:41.0246023Z Downloading task: CmdLine (2.250.1)
+2025-08-24T07:41:42.1317927Z Downloading task: PublishTestResults (2.254.0)
+2025-08-24T07:41:43.8585530Z Downloading task: PublishBuildArtifacts (1.247.1)
+2025-08-24T07:41:46.3607836Z Checking job knob settings.
+2025-08-24T07:41:46.3609564Z    Knob: DockerActionRetries = true Source: $(VSTSAGENT_DOCKER_ACTION_RETRIES) 
+2025-08-24T07:41:46.3610195Z    Knob: UseGitLongPaths = true Source: $(USE_GIT_LONG_PATHS) 
+2025-08-24T07:41:46.3611124Z    Knob: EnableIssueSourceValidation = true Source: $(ENABLE_ISSUE_SOURCE_VALIDATION) 
+2025-08-24T07:41:46.3611535Z    Knob: AgentEnablePipelineArtifactLargeChunkSize = true Source: $(AGENT_ENABLE_PIPELINEARTIFACT_LARGE_CHUNK_SIZE) 
+2025-08-24T07:41:46.3612571Z    Knob: ContinueAfterCancelProcessTreeKillAttempt = true Source: $(VSTSAGENT_CONTINUE_AFTER_CANCEL_PROCESSTREEKILL_ATTEMPT) 
+2025-08-24T07:41:46.3612899Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC) 
+2025-08-24T07:41:46.3613277Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC_LOG) 
+2025-08-24T07:41:46.3613493Z    Knob: ProcessHandlerTelemetry = true Source: $(AZP_75787_ENABLE_COLLECT) 
+2025-08-24T07:41:46.3613721Z    Knob: UseNewNodeHandlerTelemetry = True Source: $(DistributedTask.Agent.USENEWNODEHANDLERTELEMETRY) 
+2025-08-24T07:41:46.3613940Z    Knob: ProcessHandlerEnableNewLogic = true Source: $(AZP_75787_ENABLE_NEW_PH_LOGIC) 
+2025-08-24T07:41:46.3614255Z    Knob: EnableResourceMonitorDebugOutput = true Source: $(AZP_ENABLE_RESOURCE_MONITOR_DEBUG_OUTPUT) 
+2025-08-24T07:41:46.3614489Z    Knob: EnableResourceUtilizationWarnings = true Source: $(AZP_ENABLE_RESOURCE_UTILIZATION_WARNINGS) 
+2025-08-24T07:41:46.3614807Z    Knob: IgnoreVSTSTaskLib = true Source: $(AZP_AGENT_IGNORE_VSTSTASKLIB) 
+2025-08-24T07:41:46.3614998Z    Knob: FailJobWhenAgentDies = true Source: $(FAIL_JOB_WHEN_AGENT_DIES) 
+2025-08-24T07:41:46.3615257Z    Knob: CheckForTaskDeprecation = true Source: $(AZP_AGENT_CHECK_FOR_TASK_DEPRECATION) 
+2025-08-24T07:41:46.3615546Z    Knob: CheckIfTaskNodeRunnerIsDeprecated246 = True Source: $(DistributedTask.Agent.CheckIfTaskNodeRunnerIsDeprecated246) 
+2025-08-24T07:41:46.3615960Z    Knob: LogTaskNameInUserAgent = true Source: $(AZP_AGENT_LOG_TASKNAME_IN_USERAGENT) 
+2025-08-24T07:41:46.3616174Z    Knob: UseFetchFilterInCheckoutTask = true Source: $(AGENT_USE_FETCH_FILTER_IN_CHECKOUT_TASK) 
+2025-08-24T07:41:46.3616423Z    Knob: Rosetta2Warning = true Source: $(ROSETTA2_WARNING) 
+2025-08-24T07:41:46.3617249Z    Knob: UseSparseCheckoutInCheckoutTask = true Source: $(AGENT_USE_SPARSE_CHECKOUT_IN_CHECKOUT_TASK) 
+2025-08-24T07:41:46.3617655Z    Knob: AgentCDNConnectivityFailWarning = False Source: $(DistributedTask.Agent.AgentCDNConnectivityFailWarning) 
+2025-08-24T07:41:46.3617780Z Finished checking job knob settings.
+2025-08-24T07:41:46.3865391Z Start tracking orphan processes.
+2025-08-24T07:41:46.3995574Z ##[section]Finishing: Initialize job
+2025-08-24T07:41:46.4039572Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T07:41:46.4039912Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T07:41:46.4040330Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T07:41:46.4040475Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T07:41:46.4142501Z ##[section]Starting: Checkout abb@master to s
+2025-08-24T07:41:46.4214410Z ==============================================================================
+2025-08-24T07:41:46.4215064Z Task         : Get sources
+2025-08-24T07:41:46.4215302Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T07:41:46.4215451Z Version      : 1.0.0
+2025-08-24T07:41:46.4215627Z Author       : Microsoft
+2025-08-24T07:41:46.4215869Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T07:41:46.4215946Z ==============================================================================
+2025-08-24T07:41:50.3535921Z Syncing repository: abb (Git)
+2025-08-24T07:41:50.3539229Z ##[command]git version
+2025-08-24T07:41:50.3545587Z git version 2.43.0
+2025-08-24T07:41:50.3546447Z ##[command]git init "/mnt/vss/_work/1/s"
+2025-08-24T07:41:50.3549073Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-24T07:41:50.3549280Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-24T07:41:50.3549438Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-24T07:41:50.3549560Z hint: 
+2025-08-24T07:41:50.3549704Z hint: 	git config --global init.defaultBranch <name>
+2025-08-24T07:41:50.3549823Z hint: 
+2025-08-24T07:41:50.3549947Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-24T07:41:50.3550105Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-24T07:41:50.3550223Z hint: 
+2025-08-24T07:41:50.3550324Z hint: 	git branch -m <name>
+2025-08-24T07:41:50.3550450Z Initialized empty Git repository in /mnt/vss/_work/1/s/.git/
+2025-08-24T07:41:50.3551349Z ##[command]git remote add origin https://prakashlearnings108@dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T07:41:50.3554965Z ##[command]git sparse-checkout disable
+2025-08-24T07:41:50.3561226Z ##[command]git config gc.auto 0
+2025-08-24T07:41:50.3564961Z ##[command]git config core.longpaths true
+2025-08-24T07:41:50.3567768Z ##[command]git config --get-all http.https://prakashlearnings108@dev.azure.com/prakashlearnings108/abb/_git/abb.extraheader
+2025-08-24T07:41:50.3571905Z ##[command]git config --get-all http.extraheader
+2025-08-24T07:41:50.3575507Z ##[command]git config --get-regexp .*extraheader
+2025-08-24T07:41:50.3578873Z ##[command]git config --get-all http.proxy
+2025-08-24T07:41:50.3582375Z ##[command]git config http.version HTTP/1.1
+2025-08-24T07:41:50.3587206Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +c48fc39c4492aef6720c0b7c2838ecd8ab530040:refs/remotes/origin/c48fc39c4492aef6720c0b7c2838ecd8ab530040
+2025-08-24T07:41:50.3589983Z remote: Azure Repos        
+2025-08-24T07:41:50.3590134Z remote: We noticed you're using an older version of Git. For the best experience, upgrade to a newer version.        
+2025-08-24T07:41:50.3590275Z remote: 
+2025-08-24T07:41:50.3590387Z remote: Found 47 objects to send. (0 ms)        
+2025-08-24T07:41:50.3590542Z From https://dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T07:41:50.3590747Z  * [new ref]         c48fc39c4492aef6720c0b7c2838ecd8ab530040 -> origin/c48fc39c4492aef6720c0b7c2838ecd8ab530040
+2025-08-24T07:41:52.3201064Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +c48fc39c4492aef6720c0b7c2838ecd8ab530040
+2025-08-24T07:41:52.3207227Z remote: Azure Repos        
+2025-08-24T07:41:52.3207544Z remote: We noticed you're using an older version of Git. For the best experience, upgrade to a newer version.        
+2025-08-24T07:41:52.3207806Z remote: 
+2025-08-24T07:41:52.3208031Z remote: Found 0 objects to send. (0 ms)        
+2025-08-24T07:41:52.3208345Z From https://dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T07:41:52.3209086Z  * branch            c48fc39c4492aef6720c0b7c2838ecd8ab530040 -> FETCH_HEAD
+2025-08-24T07:41:54.3693457Z ##[command]git checkout --progress --force refs/remotes/origin/c48fc39c4492aef6720c0b7c2838ecd8ab530040
+2025-08-24T07:41:54.3696330Z Note: switching to 'refs/remotes/origin/c48fc39c4492aef6720c0b7c2838ecd8ab530040'.
+2025-08-24T07:41:54.3696428Z 
+2025-08-24T07:41:54.3696545Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-08-24T07:41:54.3696695Z changes and commit them, and you can discard any commits you make in this
+2025-08-24T07:41:54.3696844Z state without impacting any branches by switching back to a branch.
+2025-08-24T07:41:54.3696907Z 
+2025-08-24T07:41:54.3697175Z If you want to create a new branch to retain commits you create, you may
+2025-08-24T07:41:54.3697321Z do so (now or later) by using -c with the switch command. Example:
+2025-08-24T07:41:54.3697382Z 
+2025-08-24T07:41:54.3697525Z   git switch -c <new-branch-name>
+2025-08-24T07:41:54.3697571Z 
+2025-08-24T07:41:54.3697856Z Or undo this operation with:
+2025-08-24T07:41:54.3697903Z 
+2025-08-24T07:41:54.3697992Z   git switch -
+2025-08-24T07:41:54.3698029Z 
+2025-08-24T07:41:54.3698151Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-08-24T07:41:54.3698217Z 
+2025-08-24T07:41:54.3698321Z HEAD is now at c48fc39 Add jest-junit reporter
+2025-08-24T07:41:54.3732722Z ##[section]Finishing: Checkout abb@master to s
+2025-08-24T07:41:54.3751813Z ##[section]Starting: Use Node.js 18
+2025-08-24T07:41:54.3755625Z ==============================================================================
+2025-08-24T07:41:54.3755708Z Task         : Node.js tool installer
+2025-08-24T07:41:54.3755766Z Description  : Finds or downloads and caches the specified version spec of Node.js and adds it to the PATH
+2025-08-24T07:41:54.3755849Z Version      : 0.259.0
+2025-08-24T07:41:54.3755899Z Author       : Microsoft Corporation
+2025-08-24T07:41:54.3755957Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/tool/node-js
+2025-08-24T07:41:54.3756027Z ==============================================================================
+2025-08-24T07:41:56.6349230Z Aquiring Node called
+2025-08-24T07:41:56.6349479Z Retry count on download fails: 5 Retry delay: 1000ms
+2025-08-24T07:41:56.6351048Z Downloading: https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-x64.tar.gz
+2025-08-24T07:41:57.0633908Z Extracting archive
+2025-08-24T07:41:57.0661282Z [command]/usr/bin/tar xC /mnt/vss/_work/_temp/8d34a1b6-34f7-4975-a0a4-61b781df3b71 -f /mnt/vss/_work/_temp/0be0dbc3-3e82-4530-ac79-a3d7b09d810c
+2025-08-24T07:41:58.1279818Z 
+2025-08-24T07:41:58.1295940Z Caching tool: node 18.20.8 x64
+2025-08-24T07:41:58.6512587Z Prepending PATH environment variable with directory: /mnt/vss/_work/_tool/node/18.20.8/x64/bin
+2025-08-24T07:42:00.0808963Z ##[section]Finishing: Use Node.js 18
+2025-08-24T07:42:00.0824167Z ##[section]Starting: Install, Lint, Test
+2025-08-24T07:42:00.0827522Z ==============================================================================
+2025-08-24T07:42:00.0827614Z Task         : Command line
+2025-08-24T07:42:00.0827658Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T07:42:00.0827734Z Version      : 2.250.1
+2025-08-24T07:42:00.0827790Z Author       : Microsoft Corporation
+2025-08-24T07:42:00.0827969Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T07:42:00.0828046Z ==============================================================================
+2025-08-24T07:42:04.1677524Z Generating script.
+2025-08-24T07:42:04.1685682Z ========================== Starting Command Output ===========================
+2025-08-24T07:42:04.1703569Z [command]/usr/bin/bash --noprofile --norc /mnt/vss/_work/_temp/90842d6b-1ef0-4799-b5b4-d14b77a21ba3.sh
+2025-08-24T07:42:06.2205850Z npm warn deprecated supertest@6.3.4: Please upgrade to supertest v7.1.3+, see release notes at https://github.com/forwardemail/supertest/releases/tag/v7.1.3 - maintenance is supported by Forward Email @ https://forwardemail.net
+2025-08-24T07:42:06.3175660Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2025-08-24T07:42:06.9098168Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-08-24T07:42:07.1306504Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-08-24T07:42:07.6720228Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+2025-08-24T07:42:07.6903028Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+2025-08-24T07:42:07.9025325Z npm warn deprecated superagent@8.1.2: Please upgrade to superagent v10.2.2+, see release notes at https://github.com/forwardemail/superagent/releases/tag/v10.2.2 - maintenance is supported by Forward Email @ https://forwardemail.net
+2025-08-24T07:42:08.5621784Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2025-08-24T07:42:08.9090743Z 
+2025-08-24T07:42:08.9096113Z added 442 packages, and audited 443 packages in 5s
+2025-08-24T07:42:08.9096273Z 
+2025-08-24T07:42:08.9096451Z 70 packages are looking for funding
+2025-08-24T07:42:08.9096673Z   run `npm fund` for details
+2025-08-24T07:42:08.9109556Z 
+2025-08-24T07:42:08.9110074Z found 0 vulnerabilities
+2025-08-24T07:42:09.0601334Z 
+2025-08-24T07:42:09.0602972Z > simple-node-ui@1.0.0 lint
+2025-08-24T07:42:09.0603513Z > eslint .
+2025-08-24T07:42:09.0606579Z 
+2025-08-24T07:42:09.8198620Z 
+2025-08-24T07:42:09.8199778Z > simple-node-ui@1.0.0 test
+2025-08-24T07:42:09.8200791Z > jest --coverage --coverage --reporters=default --reporters=jest-junit
+2025-08-24T07:42:09.8201232Z 
+2025-08-24T07:42:10.8668202Z PASS tests/app.test.js
+2025-08-24T07:42:10.8670421Z   API Tests
+2025-08-24T07:42:10.8906546Z     ✓ should return the default message (23 ms)
+2025-08-24T07:42:10.8907174Z     ✓ should respond to health/live (6 ms)
+2025-08-24T07:42:10.8908489Z     ✓ should respond to health/ready (6 ms)
+2025-08-24T07:42:10.8909659Z 
+2025-08-24T07:42:10.8910385Z ----------|---------|----------|---------|---------|-------------------
+2025-08-24T07:42:10.8911300Z File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+2025-08-24T07:42:10.8913384Z ----------|---------|----------|---------|---------|-------------------
+2025-08-24T07:42:10.8915337Z All files |    87.5 |    83.33 |      75 |    92.3 |                   
+2025-08-24T07:42:10.8917414Z  app.js   |    87.5 |    83.33 |      75 |    92.3 | 22                
+2025-08-24T07:42:10.8919794Z ----------|---------|----------|---------|---------|-------------------
+2025-08-24T07:42:10.8951009Z Test Suites: 1 passed, 1 total
+2025-08-24T07:42:10.8951503Z Tests:       3 passed, 3 total
+2025-08-24T07:42:10.8951865Z Snapshots:   0 total
+2025-08-24T07:42:10.8952174Z Time:        0.7 s
+2025-08-24T07:42:10.8952465Z Ran all test suites.
+2025-08-24T07:42:10.9826308Z 
+2025-08-24T07:42:10.9887748Z ##[section]Finishing: Install, Lint, Test
+2025-08-24T07:42:10.9906510Z ##[section]Starting: Publish Test Results to ADO
+2025-08-24T07:42:10.9910266Z ==============================================================================
+2025-08-24T07:42:10.9910471Z Task         : Publish Test Results
+2025-08-24T07:42:10.9910519Z Description  : Publish test results to Azure Pipelines
+2025-08-24T07:42:10.9910586Z Version      : 2.254.0
+2025-08-24T07:42:10.9910633Z Author       : Microsoft Corporation
+2025-08-24T07:42:10.9910687Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/test/publish-test-results
+2025-08-24T07:42:10.9910768Z ==============================================================================
+2025-08-24T07:42:24.8992026Z Result Attachments will be stored in LogStore
+2025-08-24T07:42:25.1452796Z Run Attachments will be stored in LogStore
+2025-08-24T07:42:26.9508372Z Publishing test results to test run '2'.
+2025-08-24T07:42:26.9519796Z TestResults To Publish 3, Test run id:2
+2025-08-24T07:42:26.9540746Z Test results publishing 3, remaining: 0. Test run id: 2
+2025-08-24T07:42:27.2512585Z ##[section]Async Command Start: Publish test results
+2025-08-24T07:42:29.6256179Z Published Test Run : https://dev.azure.com/prakashlearnings108/abb/_TestManagement/Runs?runId=2&_a=runCharts
+2025-08-24T07:42:29.8972985Z ##[section]Async Command End: Publish test results
+2025-08-24T07:42:29.8973887Z ##[section]Finishing: Publish Test Results to ADO
+2025-08-24T07:42:29.8988431Z ##[section]Starting: Publish Test Report Artifact
+2025-08-24T07:42:29.8991725Z ==============================================================================
+2025-08-24T07:42:29.8991812Z Task         : Publish build artifacts
+2025-08-24T07:42:29.8991861Z Description  : Publish build artifacts to Azure Pipelines or a Windows file share
+2025-08-24T07:42:29.8991940Z Version      : 1.247.1
+2025-08-24T07:42:29.8991984Z Author       : Microsoft Corporation
+2025-08-24T07:42:29.8992036Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/publish-build-artifacts
+2025-08-24T07:42:29.8992119Z ==============================================================================
+2025-08-24T07:42:38.0632665Z ##[section]Async Command Start: Upload Artifact
+2025-08-24T07:42:38.0633608Z Uploading 1 files
+2025-08-24T07:42:39.5645173Z Using default max parallelism.
+2025-08-24T07:42:39.5645358Z Creating dedup client:
+2025-08-24T07:42:39.5645554Z  - Max dedup parallelism: 192
+2025-08-24T07:42:39.5645759Z  - Using blobstore domain: 0
+2025-08-24T07:42:39.5645906Z  - Using redirect timeout: 
+2025-08-24T07:42:39.5646035Z  - Hash type: Dedup64K
+2025-08-24T07:42:39.5646167Z Building file tree
+2025-08-24T07:42:39.5646301Z Uploaded 0 out of 706 bytes.
+2025-08-24T07:42:41.0652641Z Uploaded 706 out of 706 bytes.
+2025-08-24T07:42:41.0652902Z Associating files
+2025-08-24T07:42:41.0653079Z Total files: 1 ---- Associated files: 0 (0%)
+2025-08-24T07:42:41.5660824Z File upload succeed.
+2025-08-24T07:42:41.5661092Z Upload '/mnt/vss/_work/1/s/simple-node-ui/junit.xml' to file container: '#/75820472/TestResults'
+2025-08-24T07:42:41.6414815Z Associated artifact 1 with build 11
+2025-08-24T07:42:41.6414942Z ##[section]Async Command End: Upload Artifact
+2025-08-24T07:42:41.6415601Z ##[section]Finishing: Publish Test Report Artifact
+2025-08-24T07:42:41.6430574Z ##[section]Starting: Checkout abb@master to s
+2025-08-24T07:42:41.6432585Z ==============================================================================
+2025-08-24T07:42:41.6432673Z Task         : Get sources
+2025-08-24T07:42:41.6432727Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T07:42:41.6432802Z Version      : 1.0.0
+2025-08-24T07:42:41.6432848Z Author       : Microsoft
+2025-08-24T07:42:41.6432904Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T07:42:41.6432984Z ==============================================================================
+2025-08-24T07:42:41.8496831Z Cleaning any cached credential from repository: abb (Git)
+2025-08-24T07:42:41.8510630Z ##[section]Finishing: Checkout abb@master to s
+2025-08-24T07:42:41.8526943Z ##[section]Starting: Finalize Job
+2025-08-24T07:42:41.8537399Z Cleaning up task key
+2025-08-24T07:42:41.8537992Z Start cleaning up orphan processes.
+2025-08-24T07:42:41.8693930Z ##[section]Finishing: Finalize Job
+2025-08-24T07:42:41.8710998Z ##[section]Finishing: Build
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+hi
+GPT-4o Mini
+Hello! How can I assist you today?
+
+AITOPIA
+coin image
+10
+Upgrade
+
+
+
+Ask me anything...
+
+
+
+Powered by AITOPIA 
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Agent
+Full Page

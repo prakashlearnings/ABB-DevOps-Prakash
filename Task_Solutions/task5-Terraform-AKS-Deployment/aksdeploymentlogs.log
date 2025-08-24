@@ -1,0 +1,691 @@
+root@LH85JBK3:/mnt/c/career/adoabb/abbInfra/terraform-aks-acr-kv# terraform plan
+data.azurerm_client_config.current: Reading...
+data.azurerm_client_config.current: Read complete after 0s [id=Y2xpZW50Q29uZmlncy9jbGllbnRJZD1iZGI5ZWI4Yi02YjRhLTRhZTQtOWUyYi1hYTIyNGNmOGJhZmE7b2JqZWN0SWQ9OGVjNmRhZmQtNjA0Mi00NzRjLTg2MDQtNTM2Y2NiNjY2ZWM1O3N1YnNjcmlwdGlvbklkPTViNWNjMWQxLTBlM2EtNGZjOS1hMmJmLWRlNDU1NTMzZTM4ODt0ZW5hbnRJZD1lNDAzMzg3Zi03MmM3LTQ4OTItYTE2Yy05MDg2MDZiMjI3ZjM=]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_container_registry.acr will be created
+  + resource "azurerm_container_registry" "acr" {
+      + admin_enabled                 = false
+      + admin_password                = (sensitive value)  
+      + admin_username                = (known after apply)
+      + data_endpoint_host_names      = (known after apply)
+      + encryption                    = (known after apply)
+      + export_policy_enabled         = true
+      + id                            = (known after apply)
+      + location                      = "eastus"
+      + login_server                  = (known after apply)
+      + name                          = (known after apply)
+      + network_rule_bypass_option    = "AzureServices"
+      + network_rule_set              = (known after apply)
+      + public_network_access_enabled = true
+      + resource_group_name           = "abb-rg"
+      + sku                           = "Standard"
+      + tags                          = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + trust_policy_enabled          = false
+      + zone_redundancy_enabled       = false
+    }
+
+  # azurerm_key_vault.kv will be created
+  + resource "azurerm_key_vault" "kv" {
+      + access_policy                 = [
+          + {
+              + object_id          = "8ec6dafd-6042-474c-8604-536ccb666ec5"
+              + secret_permissions = [
+                  + "Get",
+                  + "Set",
+                  + "List",
+                  + "Delete",
+                  + "Recover",
+                  + "Backup",
+                  + "Restore",
+                ]
+              + tenant_id          = "e403387f-72c7-4892-a16c-908606b227f3"
+            },
+        ]
+      + enable_rbac_authorization     = false
+      + id                            = (known after apply)
+      + location                      = "eastus"
+      + name                          = (known after apply)
+      + public_network_access_enabled = true
+      + purge_protection_enabled      = true
+      + resource_group_name           = "abb-rg"
+      + sku_name                      = "standard"
+      + soft_delete_retention_days    = 7
+      + tags                          = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + tenant_id                     = "e403387f-72c7-4892-a16c-908606b227f3"
+      + vault_uri                     = (known after apply)
+
+      + contact (known after apply)
+
+      + network_acls (known after apply)
+    }
+
+  # azurerm_key_vault_secret.app_message will be created
+  + resource "azurerm_key_vault_secret" "app_message" {
+      + id                      = (known after apply)
+      + key_vault_id            = (known after apply)
+      + name                    = "app-message"
+      + resource_id             = (known after apply)
+      + resource_versionless_id = (known after apply)
+      + value                   = (sensitive value)
+      + version                 = (known after apply)
+      + versionless_id          = (known after apply)
+    }
+
+  # azurerm_kubernetes_cluster.aks will be created
+  + resource "azurerm_kubernetes_cluster" "aks" {
+      + current_kubernetes_version          = (known after apply)
+      + dns_prefix                          = (known after apply)
+      + fqdn                                = (known after apply)
+      + http_application_routing_zone_name  = (known after apply)
+      + id                                  = (known after apply)
+      + kube_admin_config                   = (sensitive value)
+      + kube_admin_config_raw               = (sensitive value)
+      + kube_config                         = (sensitive value)
+      + kube_config_raw                     = (sensitive value)
+      + kubernetes_version                  = (known after apply)
+      + location                            = "eastus"
+      + name                                = "abb-aks"
+      + node_os_upgrade_channel             = "NodeImage"
+      + node_resource_group                 = (known after apply)
+      + node_resource_group_id              = (known after apply)
+      + oidc_issuer_url                     = (known after apply)
+      + portal_fqdn                         = (known after apply)
+      + private_cluster_enabled             = false
+      + private_cluster_public_fqdn_enabled = false
+      + private_dns_zone_id                 = (known after apply)
+      + private_fqdn                        = (known after apply)
+      + resource_group_name                 = "abb-rg"
+      + role_based_access_control_enabled   = true
+      + run_command_enabled                 = true
+      + sku_tier                            = "Free"
+      + support_plan                        = "KubernetesOfficial"
+      + tags                                = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + workload_identity_enabled           = false
+
+      + auto_scaler_profile (known after apply)
+
+      + default_node_pool {
+          + kubelet_disk_type            = (known after apply)
+          + max_pods                     = (known after apply)
+          + name                         = "systempool"
+          + node_count                   = 2
+          + node_labels                  = (known after apply)
+          + only_critical_addons_enabled = false
+          + orchestrator_version         = (known after apply)
+          + os_disk_size_gb              = (known after apply)
+          + os_disk_type                 = "Managed"
+          + os_sku                       = (known after apply)
+          + scale_down_mode              = "Delete"
+          + type                         = "VirtualMachineScaleSets"
+          + ultra_ssd_enabled            = false
+          + vm_size                      = "Standard_DS2_v2"
+          + vnet_subnet_id               = (known after apply)
+          + workload_runtime             = (known after apply)
+        }
+
+      + identity {
+          + principal_id = (known after apply)
+          + tenant_id    = (known after apply)
+          + type         = "SystemAssigned"
+        }
+
+      + kubelet_identity (known after apply)
+
+      + monitor_metrics {}
+
+      + network_profile {
+          + dns_service_ip     = "10.240.0.10"
+          + ip_versions        = (known after apply)
+          + load_balancer_sku  = "standard"
+          + network_data_plane = "azure"
+          + network_mode       = (known after apply)
+          + network_plugin     = "azure"
+          + network_policy     = (known after apply)
+          + outbound_type      = "loadBalancer"
+          + pod_cidr           = (known after apply)
+          + pod_cidrs          = (known after apply)
+          + service_cidr       = "10.240.0.0/16"
+          + service_cidrs      = (known after apply)
+
+          + load_balancer_profile (known after apply)
+
+          + nat_gateway_profile (known after apply)
+        }
+
+      + oms_agent {
+          + log_analytics_workspace_id = (known after apply)
+          + oms_agent_identity         = (known after apply)
+        }
+
+      + windows_profile (known after apply)
+    }
+
+  # azurerm_log_analytics_workspace.law will be created
+  + resource "azurerm_log_analytics_workspace" "law" {
+      + allow_resource_only_permissions = true
+      + daily_quota_gb                  = -1
+      + id                              = (known after apply)
+      + internet_ingestion_enabled      = true
+      + internet_query_enabled          = true
+      + local_authentication_disabled   = (known after apply)
+      + local_authentication_enabled    = (known after apply)
+      + location                        = "eastus"
+      + name                            = (known after apply)
+      + primary_shared_key              = (sensitive value)
+      + resource_group_name             = "abb-rg"
+      + retention_in_days               = 30
+      + secondary_shared_key            = (sensitive value)
+      + sku                             = "PerGB2018"
+      + tags                            = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + workspace_id                    = (known after apply)
+    }
+
+  # azurerm_resource_group.rg will be created
+  + resource "azurerm_resource_group" "rg" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "abb-rg"
+      + tags     = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+    }
+
+  # azurerm_role_assignment.aks_acr_pull will be created
+  + resource "azurerm_role_assignment" "aks_acr_pull" {
+      + condition_version                = (known after apply)
+      + id                               = (known after apply)
+      + name                             = (known after apply)
+      + principal_id                     = (known after apply)
+      + principal_type                   = (known after apply)
+      + role_definition_id               = (known after apply)
+      + role_definition_name             = "AcrPull"
+      + scope                            = (known after apply)
+      + skip_service_principal_aad_check = (known after apply)
+    }
+
+  # azurerm_subnet.aks will be created
+  + resource "azurerm_subnet" "aks" {
+      + address_prefixes                              = [
+          + "10.10.1.0/24",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "abb-aks-snet"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "abb-rg"
+      + virtual_network_name                          = "abb-vnet"
+    }
+
+  # azurerm_virtual_network.vnet will be created
+  + resource "azurerm_virtual_network" "vnet" {
+      + address_space                  = [
+          + "10.10.0.0/16",
+        ]
+      + dns_servers                    = (known after apply)
+      + guid                           = (known after apply)
+      + id                             = (known after apply)
+      + location                       = "eastus"
+      + name                           = "abb-vnet"
+      + private_endpoint_vnet_policies = "Disabled"
+      + resource_group_name            = "abb-rg"
+      + subnet                         = (known after apply)
+      + tags                           = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+    }
+
+  # random_string.suffix will be created
+  + resource "random_string" "suffix" {
+      + id          = (known after apply)
+      + length      = 6
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (known after apply)
+      + special     = false
+      + upper       = false
+    }
+
+Plan: 10 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + acr_login_server    = (known after apply)
+  + aks_kube_config_raw = (sensitive value)
+  + aks_name            = "abb-aks"
+  + key_vault_uri       = (known after apply)
+  + resource_group      = "abb-rg"
+╷
+│ Warning: Attribute Deprecated
+│
+│   with random_string.suffix,
+│   on aks-terraform-script.tf line 12, in resource "random_string" "suffix":
+│   12:   number  = true
+│
+│ **NOTE**: This is deprecated, use `numeric` instead.
+│
+│ (and one more similar warning elsewhere)
+╵
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run        
+"terraform apply" now.
+root@LH85JBK3:/mnt/c/career/adoabb/abbInfra/terraform-aks-acr-kv# terraform apply
+data.azurerm_client_config.current: Reading...
+data.azurerm_client_config.current: Read complete after 0s [id=Y2xpZW50Q29uZmlncy9jbGllbnRJZD1iZGI5ZWI4Yi02YjRhLTRhZTQtOWUyYi1hYTIyNGNmOGJhZmE7b2JqZWN0SWQ9OGVjNmRhZmQtNjA0Mi00NzRjLTg2MDQtNTM2Y2NiNjY2ZWM1O3N1YnNjcmlwdGlvbklkPTViNWNjMWQxLTBlM2EtNGZjOS1hMmJmLWRlNDU1NTMzZTM4ODt0ZW5hbnRJZD1lNDAzMzg3Zi03MmM3LTQ4OTItYTE2Yy05MDg2MDZiMjI3ZjM=]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_container_registry.acr will be created
+  + resource "azurerm_container_registry" "acr" {
+      + admin_enabled                 = false
+      + admin_password                = (sensitive value)
+      + admin_username                = (known after apply)
+      + data_endpoint_host_names      = (known after apply)
+      + encryption                    = (known after apply)
+      + export_policy_enabled         = true
+      + id                            = (known after apply)
+      + location                      = "eastus"
+      + login_server                  = (known after apply)
+      + name                          = (known after apply)
+      + network_rule_bypass_option    = "AzureServices"
+      + network_rule_set              = (known after apply)
+      + public_network_access_enabled = true
+      + resource_group_name           = "abb-rg"
+      + sku                           = "Standard"
+      + tags                          = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + trust_policy_enabled          = false
+      + zone_redundancy_enabled       = false
+    }
+
+  # azurerm_key_vault.kv will be created
+  + resource "azurerm_key_vault" "kv" {
+      + access_policy                 = [
+          + {
+              + object_id          = "8ec6dafd-6042-474c-8604-536ccb666ec5"
+              + secret_permissions = [
+                  + "Get",
+                  + "Set",
+                  + "List",
+                  + "Delete",
+                  + "Recover",
+                  + "Backup",
+                  + "Restore",
+                ]
+              + tenant_id          = "e403387f-72c7-4892-a16c-908606b227f3"
+            },
+        ]
+      + enable_rbac_authorization     = false
+      + id                            = (known after apply)
+      + location                      = "eastus"
+      + name                          = (known after apply)
+      + public_network_access_enabled = true
+      + purge_protection_enabled      = true
+      + resource_group_name           = "abb-rg"
+      + sku_name                      = "standard"
+      + soft_delete_retention_days    = 7
+      + tags                          = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + tenant_id                     = "e403387f-72c7-4892-a16c-908606b227f3"
+      + vault_uri                     = (known after apply)
+
+      + contact (known after apply)
+
+      + network_acls (known after apply)
+    }
+
+  # azurerm_key_vault_secret.app_message will be created
+  + resource "azurerm_key_vault_secret" "app_message" {
+      + id                      = (known after apply)
+      + key_vault_id            = (known after apply)
+      + name                    = "app-message"
+      + resource_id             = (known after apply)
+      + resource_versionless_id = (known after apply)
+      + value                   = (sensitive value)
+      + version                 = (known after apply)
+      + versionless_id          = (known after apply)
+    }
+
+  # azurerm_kubernetes_cluster.aks will be created
+  + resource "azurerm_kubernetes_cluster" "aks" {
+      + current_kubernetes_version          = (known after apply)
+      + dns_prefix                          = (known after apply)
+      + fqdn                                = (known after apply)
+      + http_application_routing_zone_name  = (known after apply)
+      + id                                  = (known after apply)
+      + kube_admin_config                   = (sensitive value)
+      + kube_admin_config_raw               = (sensitive value)
+      + kube_config                         = (sensitive value)
+      + kube_config_raw                     = (sensitive value)
+      + kubernetes_version                  = (known after apply)
+      + location                            = "eastus"
+      + name                                = "abb-aks"
+      + node_os_upgrade_channel             = "NodeImage"
+      + node_resource_group                 = (known after apply)
+      + node_resource_group_id              = (known after apply)
+      + oidc_issuer_url                     = (known after apply)
+      + portal_fqdn                         = (known after apply)
+      + private_cluster_enabled             = false
+      + private_cluster_public_fqdn_enabled = false
+      + private_dns_zone_id                 = (known after apply)
+      + private_fqdn                        = (known after apply)
+      + resource_group_name                 = "abb-rg"
+      + role_based_access_control_enabled   = true
+      + run_command_enabled                 = true
+      + sku_tier                            = "Free"
+      + support_plan                        = "KubernetesOfficial"
+      + tags                                = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + workload_identity_enabled           = false
+
+      + auto_scaler_profile (known after apply)
+
+      + default_node_pool {
+          + kubelet_disk_type            = (known after apply)
+          + max_pods                     = (known after apply)
+          + name                         = "systempool"
+          + node_count                   = 2
+          + node_labels                  = (known after apply)
+          + only_critical_addons_enabled = false
+          + orchestrator_version         = (known after apply)
+          + os_disk_size_gb              = (known after apply)
+          + os_disk_type                 = "Managed"
+          + os_sku                       = (known after apply)
+          + scale_down_mode              = "Delete"
+          + type                         = "VirtualMachineScaleSets"
+          + ultra_ssd_enabled            = false
+          + vm_size                      = "Standard_DS2_v2"
+          + vnet_subnet_id               = (known after apply)
+          + workload_runtime             = (known after apply)
+        }
+
+      + identity {
+          + principal_id = (known after apply)
+          + tenant_id    = (known after apply)
+          + type         = "SystemAssigned"
+        }
+
+      + kubelet_identity (known after apply)
+
+      + monitor_metrics {}
+
+      + network_profile {
+          + dns_service_ip     = "10.240.0.10"
+          + ip_versions        = (known after apply)
+          + load_balancer_sku  = "standard"
+          + network_data_plane = "azure"
+          + network_mode       = (known after apply)
+          + network_plugin     = "azure"
+          + network_policy     = (known after apply)
+          + outbound_type      = "loadBalancer"
+          + pod_cidr           = (known after apply)
+          + pod_cidrs          = (known after apply)
+          + service_cidr       = "10.240.0.0/16"
+          + service_cidrs      = (known after apply)
+
+          + load_balancer_profile (known after apply)
+
+          + nat_gateway_profile (known after apply)
+        }
+
+      + oms_agent {
+          + log_analytics_workspace_id = (known after apply)
+          + oms_agent_identity         = (known after apply)
+        }
+
+      + windows_profile (known after apply)
+    }
+
+  # azurerm_log_analytics_workspace.law will be created
+  + resource "azurerm_log_analytics_workspace" "law" {
+      + allow_resource_only_permissions = true
+      + daily_quota_gb                  = -1
+      + id                              = (known after apply)
+      + internet_ingestion_enabled      = true
+      + internet_query_enabled          = true
+      + local_authentication_disabled   = (known after apply)
+      + local_authentication_enabled    = (known after apply)
+      + location                        = "eastus"
+      + name                            = (known after apply)
+      + primary_shared_key              = (sensitive value)
+      + resource_group_name             = "abb-rg"
+      + retention_in_days               = 30
+      + secondary_shared_key            = (sensitive value)
+      + sku                             = "PerGB2018"
+      + tags                            = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+      + workspace_id                    = (known after apply)
+    }
+
+  # azurerm_resource_group.rg will be created
+  + resource "azurerm_resource_group" "rg" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "abb-rg"
+      + tags     = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+    }
+
+  # azurerm_role_assignment.aks_acr_pull will be created
+  + resource "azurerm_role_assignment" "aks_acr_pull" {
+      + condition_version                = (known after apply)
+      + id                               = (known after apply)
+      + name                             = (known after apply)
+      + principal_id                     = (known after apply)
+      + principal_type                   = (known after apply)
+      + role_definition_id               = (known after apply)
+      + role_definition_name             = "AcrPull"
+      + scope                            = (known after apply)
+      + skip_service_principal_aad_check = (known after apply)
+    }
+
+  # azurerm_subnet.aks will be created
+  + resource "azurerm_subnet" "aks" {
+      + address_prefixes                              = [
+          + "10.10.1.0/24",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "abb-aks-snet"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "abb-rg"
+      + virtual_network_name                          = "abb-vnet"
+    }
+
+  # azurerm_virtual_network.vnet will be created
+  + resource "azurerm_virtual_network" "vnet" {
+      + address_space                  = [
+          + "10.10.0.0/16",
+        ]
+      + dns_servers                    = (known after apply)
+      + guid                           = (known after apply)
+      + id                             = (known after apply)
+      + location                       = "eastus"
+      + name                           = "abb-vnet"
+      + private_endpoint_vnet_policies = "Disabled"
+      + resource_group_name            = "abb-rg"
+      + subnet                         = (known after apply)
+      + tags                           = {
+          + "env"     = "dev"
+          + "project" = "simple-node-ui"
+        }
+    }
+
+  # random_string.suffix will be created
+  + resource "random_string" "suffix" {
+      + id          = (known after apply)
+      + length      = 6
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (known after apply)
+      + special     = false
+      + upper       = false
+    }
+
+Plan: 10 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + acr_login_server    = (known after apply)
+  + aks_kube_config_raw = (sensitive value)
+  + aks_name            = "abb-aks"
+  + key_vault_uri       = (known after apply)
+  + resource_group      = "abb-rg"
+╷
+│ Warning: Attribute Deprecated
+│
+│   with random_string.suffix,
+│   on aks-terraform-script.tf line 12, in resource "random_string" "suffix":
+│   12:   number  = true
+│
+│ **NOTE**: This is deprecated, use `numeric` instead.
+│
+│ (and one more similar warning elsewhere)
+╵
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+random_string.suffix: Creating...
+random_string.suffix: Creation complete after 0s [id=z5nv7k]
+azurerm_resource_group.rg: Creating...
+azurerm_resource_group.rg: Still creating... [10s elapsed]
+azurerm_resource_group.rg: Creation complete after 14s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg]azurerm_virtual_network.vnet: Creating...
+azurerm_key_vault.kv: Creating...
+azurerm_log_analytics_workspace.law: Creating...
+azurerm_container_registry.acr: Creating...
+azurerm_virtual_network.vnet: Creation complete after 7s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg/providers/Microsoft.Network/virtualNetworks/abb-vnet]
+azurerm_subnet.aks: Creating...
+azurerm_log_analytics_workspace.law: Still creating... [10s elapsed]
+azurerm_key_vault.kv: Still creating... [10s elapsed]
+azurerm_container_registry.acr: Still creating... [10s elapsed]
+azurerm_subnet.aks: Creation complete after 8s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg/providers/Microsoft.Network/virtualNetworks/abb-vnet/subnets/abb-aks-snet]
+azurerm_key_vault.kv: Still creating... [20s elapsed]
+azurerm_log_analytics_workspace.law: Still creating... [20s elapsed]
+azurerm_container_registry.acr: Still creating... [20s elapsed]
+azurerm_container_registry.acr: Creation complete after 23s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg/providers/Microsoft.ContainerRegistry/registries/abbz5nv7k]
+azurerm_log_analytics_workspace.law: Still creating... [30s elapsed]
+azurerm_key_vault.kv: Still creating... [30s elapsed]
+azurerm_log_analytics_workspace.law: Still creating... [40s elapsed]
+azurerm_key_vault.kv: Still creating... [40s elapsed]
+azurerm_log_analytics_workspace.law: Creation complete after 49s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg/providers/Microsoft.OperationalInsights/workspaces/abb-law-z5nv7k]
+azurerm_kubernetes_cluster.aks: Creating...
+azurerm_key_vault.kv: Still creating... [50s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [10s elapsed]
+azurerm_key_vault.kv: Still creating... [1m0s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [20s elapsed]
+azurerm_key_vault.kv: Still creating... [1m10s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [30s elapsed]
+azurerm_key_vault.kv: Still creating... [1m20s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [40s elapsed]
+azurerm_key_vault.kv: Still creating... [1m30s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [50s elapsed]
+azurerm_key_vault.kv: Still creating... [1m40s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [1m0s elapsed]
+azurerm_key_vault.kv: Still creating... [1m50s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [1m10s elapsed]
+azurerm_key_vault.kv: Still creating... [2m0s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [1m20s elapsed]
+azurerm_key_vault.kv: Still creating... [2m10s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [1m30s elapsed]
+azurerm_key_vault.kv: Still creating... [2m20s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [1m40s elapsed]
+azurerm_key_vault.kv: Still creating... [2m30s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [1m50s elapsed]
+azurerm_key_vault.kv: Still creating... [2m40s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [2m0s elapsed]
+azurerm_key_vault.kv: Still creating... [2m50s elapsed]
+azurerm_key_vault.kv: Creation complete after 2m51s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg/providers/Microsoft.KeyVault/vaults/abb-kv-z5nv7k]
+azurerm_key_vault_secret.app_message: Creating...
+azurerm_key_vault_secret.app_message: Creation complete after 4s [id=https://abb-kv-z5nv7k.vault.azure.net/secrets/app-message/911864312fa24ec399019c2727ffac8c]
+azurerm_kubernetes_cluster.aks: Still creating... [2m10s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [2m20s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [2m30s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [2m40s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [2m50s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [3m0s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [3m10s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [3m20s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [3m30s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [3m40s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [3m50s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [4m0s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [4m10s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [4m20s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [4m30s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [4m40s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [4m50s elapsed]
+azurerm_kubernetes_cluster.aks: Still creating... [5m0s elapsed]
+azurerm_kubernetes_cluster.aks: Creation complete after 5m7s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg/providers/Microsoft.ContainerService/managedClusters/abb-aks]
+azurerm_role_assignment.aks_acr_pull: Creating...
+azurerm_role_assignment.aks_acr_pull: Still creating... [10s elapsed]
+azurerm_role_assignment.aks_acr_pull: Still creating... [20s elapsed]
+azurerm_role_assignment.aks_acr_pull: Creation complete after 27s [id=/subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/resourceGroups/abb-rg/providers/Microsoft.ContainerRegistry/registries/abbz5nv7k/providers/Microsoft.Authorization/roleAssignments/1aa05066-940e-b372-051c-03a66e8fe612]
+╷
+│ Warning: Attribute Deprecated
+│
+│   with random_string.suffix,
+│   on aks-terraform-script.tf line 12, in resource "random_string" "suffix":
+│   12:   number  = true
+│
+│ **NOTE**: This is deprecated, use `numeric` instead.
+╵
+
+Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+acr_login_server = "abbz5nv7k.azurecr.io"
+aks_kube_config_raw = <sensitive>
+aks_name = "abb-aks"
+key_vault_uri = "https://abb-kv-z5nv7k.vault.azure.net/"
+resource_group = "abb-rg"
+root@LH85JBK3:/mnt/c/career/adoabb/abbInfra/terraform-aks-acr-kv#

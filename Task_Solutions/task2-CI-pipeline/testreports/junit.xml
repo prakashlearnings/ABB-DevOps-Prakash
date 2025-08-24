@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="3" failures="0" errors="0" time="0.672">
+  <testsuite name="API Tests" errors="0" failures="0" skipped="0" timestamp="2025-08-24T07:42:10" time="0.636" tests="3">
+    <testcase classname="API Tests should return the default message" name="API Tests should return the default message" time="0.023">
+    </testcase>
+    <testcase classname="API Tests should respond to health/live" name="API Tests should respond to health/live" time="0.006">
+    </testcase>
+    <testcase classname="API Tests should respond to health/ready" name="API Tests should respond to health/ready" time="0.006">
+    </testcase>
+  </testsuite>
+</testsuites>

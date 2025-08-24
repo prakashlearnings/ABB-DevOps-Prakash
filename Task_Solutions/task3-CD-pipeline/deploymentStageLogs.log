@@ -1,0 +1,525 @@
+2025-08-24T13:02:28.4009281Z ##[section]Starting: Helm Deploy
+2025-08-24T13:02:30.6920133Z ##[section]Starting: Initialize job
+2025-08-24T13:02:30.6922165Z Agent name: 'abb 1'
+2025-08-24T13:02:30.6922435Z Agent machine name: '155e19e4e000000'
+2025-08-24T13:02:30.6922566Z Current agent version: '4.260.0'
+2025-08-24T13:02:30.6940040Z ##[group]Managed DevOps Pool
+2025-08-24T13:02:30.6940235Z SKU: Standard_E2as_v4
+2025-08-24T13:02:30.6940464Z Image: /subscriptions/5b5cc1d1-0e3a-4fc9-a2bf-de455533e388/Providers/Microsoft.Compute/Locations/centralus/publishers/canonical/artifacttypes/vmimage/offers/ubuntu-24_04-lts/skus/server/versions/latest
+2025-08-24T13:02:30.6940660Z Image Version: 24.04.202508220
+2025-08-24T13:02:30.6940759Z IP: 10.1.0.5
+2025-08-24T13:02:30.6940886Z Interactive Mode: False
+2025-08-24T13:02:30.6941014Z Request Id: c015b929-2df3-48d7-a7eb-7f5743ed5d6b
+2025-08-24T13:02:30.6941133Z Pool Name: abb
+2025-08-24T13:02:30.6941227Z Location: centralus
+2025-08-24T13:02:30.6941333Z Work Folder: /mnt/vss/_work
+2025-08-24T13:02:30.6941494Z Resource Provider: VmssResourceProvider
+2025-08-24T13:02:30.6941625Z Worker Build Version: 30380202
+2025-08-24T13:02:30.6941728Z ##[endgroup]
+2025-08-24T13:02:34.7434506Z Agent running as: 'AzDevOps'
+2025-08-24T13:02:34.7479762Z Prepare build directory.
+2025-08-24T13:02:34.7629003Z Set build variables.
+2025-08-24T13:02:34.7642248Z Download all required tasks.
+2025-08-24T13:02:34.7694334Z Downloading task: DownloadBuildArtifacts (1.220.0)
+2025-08-24T13:02:35.0539989Z Downloading task: CmdLine (2.250.1)
+2025-08-24T13:02:36.1560875Z Downloading task: HelmInstaller (1.246.3)
+2025-08-24T13:02:37.4023563Z Downloading task: HelmDeploy (1.259.3)
+2025-08-24T13:02:44.0879576Z Checking job knob settings.
+2025-08-24T13:02:44.0881458Z    Knob: DockerActionRetries = true Source: $(VSTSAGENT_DOCKER_ACTION_RETRIES) 
+2025-08-24T13:02:44.0882183Z    Knob: UseGitLongPaths = true Source: $(USE_GIT_LONG_PATHS) 
+2025-08-24T13:02:44.0883229Z    Knob: EnableIssueSourceValidation = true Source: $(ENABLE_ISSUE_SOURCE_VALIDATION) 
+2025-08-24T13:02:44.0883698Z    Knob: AgentEnablePipelineArtifactLargeChunkSize = true Source: $(AGENT_ENABLE_PIPELINEARTIFACT_LARGE_CHUNK_SIZE) 
+2025-08-24T13:02:44.0884845Z    Knob: ContinueAfterCancelProcessTreeKillAttempt = true Source: $(VSTSAGENT_CONTINUE_AFTER_CANCEL_PROCESSTREEKILL_ATTEMPT) 
+2025-08-24T13:02:44.0885219Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC) 
+2025-08-24T13:02:44.0885466Z    Knob: ProcessHandlerSecureArguments = false Source: $(AZP_75787_ENABLE_NEW_LOGIC_LOG) 
+2025-08-24T13:02:44.0885699Z    Knob: ProcessHandlerTelemetry = true Source: $(AZP_75787_ENABLE_COLLECT) 
+2025-08-24T13:02:44.0885951Z    Knob: UseNewNodeHandlerTelemetry = True Source: $(DistributedTask.Agent.USENEWNODEHANDLERTELEMETRY) 
+2025-08-24T13:02:44.0886198Z    Knob: ProcessHandlerEnableNewLogic = true Source: $(AZP_75787_ENABLE_NEW_PH_LOGIC) 
+2025-08-24T13:02:44.0886556Z    Knob: EnableResourceMonitorDebugOutput = true Source: $(AZP_ENABLE_RESOURCE_MONITOR_DEBUG_OUTPUT) 
+2025-08-24T13:02:44.0886810Z    Knob: EnableResourceUtilizationWarnings = true Source: $(AZP_ENABLE_RESOURCE_UTILIZATION_WARNINGS) 
+2025-08-24T13:02:44.0887156Z    Knob: IgnoreVSTSTaskLib = true Source: $(AZP_AGENT_IGNORE_VSTSTASKLIB) 
+2025-08-24T13:02:44.0887378Z    Knob: FailJobWhenAgentDies = true Source: $(FAIL_JOB_WHEN_AGENT_DIES) 
+2025-08-24T13:02:44.0887657Z    Knob: CheckForTaskDeprecation = true Source: $(AZP_AGENT_CHECK_FOR_TASK_DEPRECATION) 
+2025-08-24T13:02:44.0888346Z    Knob: CheckIfTaskNodeRunnerIsDeprecated246 = True Source: $(DistributedTask.Agent.CheckIfTaskNodeRunnerIsDeprecated246) 
+2025-08-24T13:02:44.0888826Z    Knob: LogTaskNameInUserAgent = true Source: $(AZP_AGENT_LOG_TASKNAME_IN_USERAGENT) 
+2025-08-24T13:02:44.0889069Z    Knob: UseFetchFilterInCheckoutTask = true Source: $(AGENT_USE_FETCH_FILTER_IN_CHECKOUT_TASK) 
+2025-08-24T13:02:44.0889360Z    Knob: Rosetta2Warning = true Source: $(ROSETTA2_WARNING) 
+2025-08-24T13:02:44.0890274Z    Knob: UseSparseCheckoutInCheckoutTask = true Source: $(AGENT_USE_SPARSE_CHECKOUT_IN_CHECKOUT_TASK) 
+2025-08-24T13:02:44.0890776Z    Knob: AgentCDNConnectivityFailWarning = False Source: $(DistributedTask.Agent.AgentCDNConnectivityFailWarning) 
+2025-08-24T13:02:44.0890927Z Finished checking job knob settings.
+2025-08-24T13:02:44.1127462Z Start tracking orphan processes.
+2025-08-24T13:02:44.1260345Z ##[section]Finishing: Initialize job
+2025-08-24T13:02:44.1305029Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T13:02:44.1305415Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T13:02:44.1305859Z ##[section]Async Command Start: DetectDockerContainer
+2025-08-24T13:02:44.1306018Z ##[section]Async Command End: DetectDockerContainer
+2025-08-24T13:02:44.1409252Z ##[section]Starting: HelmDeploy
+2025-08-24T13:02:44.1480807Z ==============================================================================
+2025-08-24T13:02:44.1481614Z Task         : Package and deploy Helm charts
+2025-08-24T13:02:44.1481848Z Description  : Deploy, configure, update a Kubernetes cluster in Azure Container Service by running helm commands
+2025-08-24T13:02:44.1482079Z Version      : 1.259.3
+2025-08-24T13:02:44.1482281Z Author       : Microsoft Corporation
+2025-08-24T13:02:44.1482468Z Help         : https://aka.ms/azpipes-helm-tsg
+2025-08-24T13:02:44.1482536Z ==============================================================================
+2025-08-24T13:02:49.6794137Z ##[section]Finishing: HelmDeploy
+2025-08-24T13:02:49.6814737Z ##[section]Starting: Download Artifact
+2025-08-24T13:02:49.6819539Z ==============================================================================
+2025-08-24T13:02:49.6819651Z Task         : Download build artifacts
+2025-08-24T13:02:49.6819711Z Description  : Download files that were saved as artifacts of a completed build
+2025-08-24T13:02:49.6819802Z Version      : 1.220.0
+2025-08-24T13:02:49.6819860Z Author       : Microsoft Corporation
+2025-08-24T13:02:49.6819928Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/download-build-artifacts
+2025-08-24T13:02:49.6820032Z ==============================================================================
+2025-08-24T13:02:49.9368826Z Download from the specified build: #25
+2025-08-24T13:02:49.9389881Z Download artifact to: /mnt/vss/_work/1/
+2025-08-24T13:02:54.1603772Z Pattern: **
+2025-08-24T13:02:54.1617632Z Minimatch patterns: [**]
+2025-08-24T13:02:54.1623681Z Applying include pattern against original list.
+2025-08-24T13:02:54.1744241Z 2 matches
+2025-08-24T13:02:54.1904908Z 2 final results
+2025-08-24T13:02:54.1944795Z Start downloading FCS artifact- TestResults
+2025-08-24T13:02:57.4345446Z Using default max parallelism.
+2025-08-24T13:02:57.4351590Z Creating dedup client:
+2025-08-24T13:02:57.4352169Z  - Max dedup parallelism: 192
+2025-08-24T13:02:57.4353593Z  - Using blobstore domain: 0
+2025-08-24T13:02:57.4414141Z  - Using redirect timeout: 
+2025-08-24T13:02:57.4599956Z  - Hash type: Dedup64K
+2025-08-24T13:02:57.4704379Z Downloading: /mnt/vss/_work/1/TestResults/junit.xml
+2025-08-24T13:03:01.3850207Z Downloading artifact finished.
+2025-08-24T13:03:01.3861783Z ##[section]Finishing: Download Artifact
+2025-08-24T13:03:01.3878050Z ##[section]Starting: Checkout abb@master to s
+2025-08-24T13:03:01.3885518Z ==============================================================================
+2025-08-24T13:03:01.3885622Z Task         : Get sources
+2025-08-24T13:03:01.3885693Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T13:03:01.3885812Z Version      : 1.0.0
+2025-08-24T13:03:01.3885872Z Author       : Microsoft
+2025-08-24T13:03:01.3886248Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T13:03:01.3886340Z ==============================================================================
+2025-08-24T13:03:03.6790833Z Syncing repository: abb (Git)
+2025-08-24T13:03:03.6794785Z ##[command]git version
+2025-08-24T13:03:03.6798762Z git version 2.43.0
+2025-08-24T13:03:03.6799744Z ##[command]git init "/mnt/vss/_work/1/s"
+2025-08-24T13:03:03.6803208Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-24T13:03:03.6803422Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-24T13:03:03.6803597Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-24T13:03:03.6803734Z hint: 
+2025-08-24T13:03:03.6803875Z hint: 	git config --global init.defaultBranch <name>
+2025-08-24T13:03:03.6803999Z hint: 
+2025-08-24T13:03:03.6804134Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-24T13:03:03.6804304Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-24T13:03:03.6804439Z hint: 
+2025-08-24T13:03:03.6804554Z hint: 	git branch -m <name>
+2025-08-24T13:03:03.6804872Z Initialized empty Git repository in /mnt/vss/_work/1/s/.git/
+2025-08-24T13:03:03.6805734Z ##[command]git remote add origin https://prakashlearnings108@dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T13:03:03.6809751Z ##[command]git sparse-checkout disable
+2025-08-24T13:03:03.6816502Z ##[command]git config gc.auto 0
+2025-08-24T13:03:03.6820813Z ##[command]git config core.longpaths true
+2025-08-24T13:03:03.6824085Z ##[command]git config --get-all http.https://prakashlearnings108@dev.azure.com/prakashlearnings108/abb/_git/abb.extraheader
+2025-08-24T13:03:03.6829068Z ##[command]git config --get-all http.extraheader
+2025-08-24T13:03:03.6832963Z ##[command]git config --get-regexp .*extraheader
+2025-08-24T13:03:03.6836823Z ##[command]git config --get-all http.proxy
+2025-08-24T13:03:03.6840840Z ##[command]git config http.version HTTP/1.1
+2025-08-24T13:03:03.6846029Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +80c8cc755c79e7fa9164d8cbd213bbec666ed979:refs/remotes/origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T13:03:03.6849289Z remote: Azure Repos        
+2025-08-24T13:03:03.6849457Z remote: We noticed you're using an older version of Git. For the best experience, upgrade to a newer version.        
+2025-08-24T13:03:03.6849621Z remote: 
+2025-08-24T13:03:03.6849748Z remote: Found 38 objects to send. (0 ms)        
+2025-08-24T13:03:04.0091651Z From https://dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T13:03:04.0095821Z  * [new ref]         80c8cc755c79e7fa9164d8cbd213bbec666ed979 -> origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T13:03:05.0516758Z ##[command]git --config-env=http.extraheader=env_var_http.extraheader fetch --force --tags --prune --prune-tags --progress --no-recurse-submodules origin --depth=1  +80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T13:03:05.0523025Z remote: Azure Repos        
+2025-08-24T13:03:05.0523335Z remote: We noticed you're using an older version of Git. For the best experience, upgrade to a newer version.        
+2025-08-24T13:03:05.0523635Z remote: 
+2025-08-24T13:03:05.0523931Z remote: Found 0 objects to send. (0 ms)        
+2025-08-24T13:03:05.0524250Z From https://dev.azure.com/prakashlearnings108/abb/_git/abb
+2025-08-24T13:03:05.0524980Z  * branch            80c8cc755c79e7fa9164d8cbd213bbec666ed979 -> FETCH_HEAD
+2025-08-24T13:03:07.0730198Z ##[command]git checkout --progress --force refs/remotes/origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979
+2025-08-24T13:03:07.0733924Z Note: switching to 'refs/remotes/origin/80c8cc755c79e7fa9164d8cbd213bbec666ed979'.
+2025-08-24T13:03:07.0734025Z 
+2025-08-24T13:03:07.0734180Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-08-24T13:03:07.0734378Z changes and commit them, and you can discard any commits you make in this
+2025-08-24T13:03:07.0734566Z state without impacting any branches by switching back to a branch.
+2025-08-24T13:03:07.0734653Z 
+2025-08-24T13:03:07.0734789Z If you want to create a new branch to retain commits you create, you may
+2025-08-24T13:03:07.0734952Z do so (now or later) by using -c with the switch command. Example:
+2025-08-24T13:03:07.0735347Z 
+2025-08-24T13:03:07.0735920Z   git switch -c <new-branch-name>
+2025-08-24T13:03:07.0735980Z 
+2025-08-24T13:03:07.0736104Z Or undo this operation with:
+2025-08-24T13:03:07.0736157Z 
+2025-08-24T13:03:07.0736265Z   git switch -
+2025-08-24T13:03:07.0736317Z 
+2025-08-24T13:03:07.0736456Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-08-24T13:03:07.0736531Z 
+2025-08-24T13:03:07.0736650Z HEAD is now at 80c8cc7 multi stage CI/CD
+2025-08-24T13:03:07.0746279Z ##[section]Finishing: Checkout abb@master to s
+2025-08-24T13:03:07.0762706Z ##[section]Starting: Install unzip for Helm
+2025-08-24T13:03:07.0766061Z ==============================================================================
+2025-08-24T13:03:07.0766148Z Task         : Command line
+2025-08-24T13:03:07.0766205Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T13:03:07.0766290Z Version      : 2.250.1
+2025-08-24T13:03:07.0766348Z Author       : Microsoft Corporation
+2025-08-24T13:03:07.0766423Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T13:03:07.0766503Z ==============================================================================
+2025-08-24T13:03:11.5115978Z Generating script.
+2025-08-24T13:03:11.5126716Z ========================== Starting Command Output ===========================
+2025-08-24T13:03:11.5166525Z [command]/usr/bin/bash --noprofile --norc /mnt/vss/_work/_temp/7e84b17d-f1e6-4d03-8b4d-c510b0e2c643.sh
+2025-08-24T13:03:11.6519230Z Hit:1 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-08-24T13:03:11.6520073Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-08-24T13:03:11.6520598Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-08-24T13:03:11.6524634Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-08-24T13:03:12.8149568Z Reading package lists...
+2025-08-24T13:03:12.8497352Z Reading package lists...
+2025-08-24T13:03:13.0224786Z Building dependency tree...
+2025-08-24T13:03:13.0231177Z Reading state information...
+2025-08-24T13:03:13.1781057Z Suggested packages:
+2025-08-24T13:03:13.1782624Z   zip
+2025-08-24T13:03:13.1937131Z The following NEW packages will be installed:
+2025-08-24T13:03:13.1938305Z   unzip
+2025-08-24T13:03:13.2548381Z 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2025-08-24T13:03:13.2549242Z Need to get 174 kB of archives.
+2025-08-24T13:03:13.2554218Z After this operation, 384 kB of additional disk space will be used.
+2025-08-24T13:03:13.2554609Z Get:1 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 unzip amd64 6.0-28ubuntu4.1 [174 kB]
+2025-08-24T13:03:13.4171040Z debconf: unable to initialize frontend: Dialog
+2025-08-24T13:03:13.4182858Z debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+2025-08-24T13:03:13.4188343Z debconf: falling back to frontend: Readline
+2025-08-24T13:03:13.4243512Z debconf: unable to initialize frontend: Readline
+2025-08-24T13:03:13.4243844Z debconf: (This frontend requires a controlling tty.)
+2025-08-24T13:03:13.4244121Z debconf: falling back to frontend: Teletype
+2025-08-24T13:03:13.4286809Z dpkg-preconfigure: unable to re-open stdin: 
+2025-08-24T13:03:13.4567342Z Fetched 174 kB in 0s (3059 kB/s)
+2025-08-24T13:03:13.4724034Z Selecting previously unselected package unzip.
+2025-08-24T13:03:13.4755276Z (Reading database ... 
+2025-08-24T13:03:13.4756072Z (Reading database ... 5%
+2025-08-24T13:03:13.4756565Z (Reading database ... 10%
+2025-08-24T13:03:13.4757125Z (Reading database ... 15%
+2025-08-24T13:03:13.4757531Z (Reading database ... 20%
+2025-08-24T13:03:13.4757928Z (Reading database ... 25%
+2025-08-24T13:03:13.4758153Z (Reading database ... 30%
+2025-08-24T13:03:13.4758375Z (Reading database ... 35%
+2025-08-24T13:03:13.4758590Z (Reading database ... 40%
+2025-08-24T13:03:13.4758808Z (Reading database ... 45%
+2025-08-24T13:03:13.4763417Z (Reading database ... 50%
+2025-08-24T13:03:13.4867488Z (Reading database ... 55%
+2025-08-24T13:03:13.4888153Z (Reading database ... 60%
+2025-08-24T13:03:13.4895944Z (Reading database ... 65%
+2025-08-24T13:03:13.4918233Z (Reading database ... 70%
+2025-08-24T13:03:13.4939452Z (Reading database ... 75%
+2025-08-24T13:03:13.4954798Z (Reading database ... 80%
+2025-08-24T13:03:13.4966826Z (Reading database ... 85%
+2025-08-24T13:03:13.4977298Z (Reading database ... 90%
+2025-08-24T13:03:13.4986366Z (Reading database ... 95%
+2025-08-24T13:03:13.4987960Z (Reading database ... 100%
+2025-08-24T13:03:13.4989304Z (Reading database ... 68220 files and directories currently installed.)
+2025-08-24T13:03:13.5016819Z Preparing to unpack .../unzip_6.0-28ubuntu4.1_amd64.deb ...
+2025-08-24T13:03:13.5055569Z Unpacking unzip (6.0-28ubuntu4.1) ...
+2025-08-24T13:03:13.5343023Z Setting up unzip (6.0-28ubuntu4.1) ...
+2025-08-24T13:03:13.5387909Z Processing triggers for man-db (2.12.0-4build2) ...
+2025-08-24T13:03:14.1123119Z debconf: unable to initialize frontend: Dialog
+2025-08-24T13:03:14.1126885Z debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+2025-08-24T13:03:14.1127572Z debconf: falling back to frontend: Readline
+2025-08-24T13:03:14.1189346Z debconf: unable to initialize frontend: Readline
+2025-08-24T13:03:14.1189915Z debconf: (This frontend requires a controlling tty.)
+2025-08-24T13:03:14.1190444Z debconf: falling back to frontend: Teletype
+2025-08-24T13:03:14.4946646Z 
+2025-08-24T13:03:14.4949108Z Running kernel seems to be up-to-date.
+2025-08-24T13:03:14.4949467Z 
+2025-08-24T13:03:14.4949874Z No services need to be restarted.
+2025-08-24T13:03:14.4950219Z 
+2025-08-24T13:03:14.4950728Z No containers need to be restarted.
+2025-08-24T13:03:14.4950982Z 
+2025-08-24T13:03:14.4951979Z No user sessions are running outdated binaries.
+2025-08-24T13:03:14.4952181Z 
+2025-08-24T13:03:14.4952596Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-08-24T13:03:15.3778613Z 
+2025-08-24T13:03:15.3846229Z ##[section]Finishing: Install unzip for Helm
+2025-08-24T13:03:15.3862831Z ##[section]Starting: Install Azure CLI 2.55.0
+2025-08-24T13:03:15.3866465Z ==============================================================================
+2025-08-24T13:03:15.3866551Z Task         : Command line
+2025-08-24T13:03:15.3866609Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T13:03:15.3866692Z Version      : 2.250.1
+2025-08-24T13:03:15.3866743Z Author       : Microsoft Corporation
+2025-08-24T13:03:15.3866804Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T13:03:15.3866881Z ==============================================================================
+2025-08-24T13:03:17.7244778Z Generating script.
+2025-08-24T13:03:17.7254467Z ========================== Starting Command Output ===========================
+2025-08-24T13:03:17.7272204Z [command]/usr/bin/bash --noprofile --norc /mnt/vss/_work/_temp/6707f99c-b955-4864-b16f-c556b2c0c67a.sh
+2025-08-24T13:03:18.0908977Z Hit:1 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-08-24T13:03:18.0910609Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-08-24T13:03:18.0910951Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-08-24T13:03:18.0911284Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-08-24T13:03:19.2784795Z Reading package lists...
+2025-08-24T13:03:19.3040025Z Reading package lists...
+2025-08-24T13:03:19.4713534Z Building dependency tree...
+2025-08-24T13:03:19.4719966Z Reading state information...
+2025-08-24T13:03:19.6323306Z ca-certificates is already the newest version (20240203).
+2025-08-24T13:03:19.6324064Z curl is already the newest version (8.5.0-2ubuntu10.6).
+2025-08-24T13:03:19.6324744Z curl set to manually installed.
+2025-08-24T13:03:19.6325156Z gnupg is already the newest version (2.4.4-2ubuntu17.3).
+2025-08-24T13:03:19.6325633Z gnupg set to manually installed.
+2025-08-24T13:03:19.6326437Z lsb-release is already the newest version (12.0-2).
+2025-08-24T13:03:19.6327642Z lsb-release set to manually installed.
+2025-08-24T13:03:19.6330779Z The following NEW packages will be installed:
+2025-08-24T13:03:19.6334722Z   apt-transport-https
+2025-08-24T13:03:19.6554730Z 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2025-08-24T13:03:19.6555417Z Need to get 3970 B of archives.
+2025-08-24T13:03:19.6557116Z After this operation, 36.9 kB of additional disk space will be used.
+2025-08-24T13:03:19.6557508Z Get:1 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 apt-transport-https all 2.8.3 [3970 B]
+2025-08-24T13:03:19.8718870Z Fetched 3970 B in 0s (254 kB/s)
+2025-08-24T13:03:19.8871424Z Selecting previously unselected package apt-transport-https.
+2025-08-24T13:03:19.8895761Z (Reading database ... 
+2025-08-24T13:03:19.8896555Z (Reading database ... 5%
+2025-08-24T13:03:19.8898955Z (Reading database ... 10%
+2025-08-24T13:03:19.8899636Z (Reading database ... 15%
+2025-08-24T13:03:19.8900146Z (Reading database ... 20%
+2025-08-24T13:03:19.8900562Z (Reading database ... 25%
+2025-08-24T13:03:19.8900921Z (Reading database ... 30%
+2025-08-24T13:03:19.8901281Z (Reading database ... 35%
+2025-08-24T13:03:19.8901851Z (Reading database ... 40%
+2025-08-24T13:03:19.8902331Z (Reading database ... 45%
+2025-08-24T13:03:19.8910148Z (Reading database ... 50%
+2025-08-24T13:03:19.9001147Z (Reading database ... 55%
+2025-08-24T13:03:19.9019423Z (Reading database ... 60%
+2025-08-24T13:03:19.9028150Z (Reading database ... 65%
+2025-08-24T13:03:19.9048897Z (Reading database ... 70%
+2025-08-24T13:03:19.9067938Z (Reading database ... 75%
+2025-08-24T13:03:19.9083031Z (Reading database ... 80%
+2025-08-24T13:03:19.9094683Z (Reading database ... 85%
+2025-08-24T13:03:19.9104463Z (Reading database ... 90%
+2025-08-24T13:03:19.9112791Z (Reading database ... 95%
+2025-08-24T13:03:19.9113249Z (Reading database ... 100%
+2025-08-24T13:03:19.9114310Z (Reading database ... 68238 files and directories currently installed.)
+2025-08-24T13:03:19.9133209Z Preparing to unpack .../apt-transport-https_2.8.3_all.deb ...
+2025-08-24T13:03:19.9146931Z Unpacking apt-transport-https (2.8.3) ...
+2025-08-24T13:03:19.9388296Z Setting up apt-transport-https (2.8.3) ...
+2025-08-24T13:03:20.5532769Z 
+2025-08-24T13:03:20.5533593Z Running kernel seems to be up-to-date.
+2025-08-24T13:03:20.5533727Z 
+2025-08-24T13:03:20.5533940Z No services need to be restarted.
+2025-08-24T13:03:20.5534029Z 
+2025-08-24T13:03:20.5535353Z No containers need to be restarted.
+2025-08-24T13:03:20.5536702Z 
+2025-08-24T13:03:20.5537706Z No user sessions are running outdated binaries.
+2025-08-24T13:03:20.5538048Z 
+2025-08-24T13:03:20.5539120Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-08-24T13:03:21.6556782Z Types: deb
+2025-08-24T13:03:21.6560623Z URIs: https://packages.microsoft.com/repos/azure-cli/
+2025-08-24T13:03:21.6561264Z Suites: noble
+2025-08-24T13:03:21.6563004Z Components: main
+2025-08-24T13:03:21.6563493Z Architectures: amd64
+2025-08-24T13:03:21.6565651Z Signed-by: /etc/apt/keyrings/microsoft.gpg
+2025-08-24T13:03:21.7916926Z Get:1 https://packages.microsoft.com/repos/azure-cli noble InRelease [3564 B]
+2025-08-24T13:03:21.8193596Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-08-24T13:03:21.8213116Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-08-24T13:03:21.8213433Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-08-24T13:03:21.8262174Z Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-08-24T13:03:21.9645856Z Get:6 https://packages.microsoft.com/repos/azure-cli noble/main amd64 Packages [1497 B]
+2025-08-24T13:03:22.2887260Z Fetched 5061 B in 0s (11.5 kB/s)
+2025-08-24T13:03:23.0369751Z Reading package lists...
+2025-08-24T13:03:23.0619831Z Reading package lists...
+2025-08-24T13:03:23.2342016Z Building dependency tree...
+2025-08-24T13:03:23.2346079Z Reading state information...
+2025-08-24T13:03:23.4060701Z The following NEW packages will be installed:
+2025-08-24T13:03:23.4064875Z   azure-cli
+2025-08-24T13:03:23.4724134Z 0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+2025-08-24T13:03:23.4725419Z Need to get 53.9 MB of archives.
+2025-08-24T13:03:23.4725776Z After this operation, 630 MB of additional disk space will be used.
+2025-08-24T13:03:23.4726299Z Get:1 https://packages.microsoft.com/repos/azure-cli noble/main amd64 azure-cli amd64 2.76.0-1~noble [53.9 MB]
+2025-08-24T13:03:23.9784823Z Fetched 53.9 MB in 0s (153 MB/s)
+2025-08-24T13:03:24.0028290Z Selecting previously unselected package azure-cli.
+2025-08-24T13:03:24.0060089Z (Reading database ... 
+2025-08-24T13:03:24.0060557Z (Reading database ... 5%
+2025-08-24T13:03:24.0062409Z (Reading database ... 10%
+2025-08-24T13:03:24.0062650Z (Reading database ... 15%
+2025-08-24T13:03:24.0062879Z (Reading database ... 20%
+2025-08-24T13:03:24.0063101Z (Reading database ... 25%
+2025-08-24T13:03:24.0063324Z (Reading database ... 30%
+2025-08-24T13:03:24.0063564Z (Reading database ... 35%
+2025-08-24T13:03:24.0063824Z (Reading database ... 40%
+2025-08-24T13:03:24.0064045Z (Reading database ... 45%
+2025-08-24T13:03:24.0072804Z (Reading database ... 50%
+2025-08-24T13:03:24.0163590Z (Reading database ... 55%
+2025-08-24T13:03:24.0181639Z (Reading database ... 60%
+2025-08-24T13:03:24.0190638Z (Reading database ... 65%
+2025-08-24T13:03:24.0211188Z (Reading database ... 70%
+2025-08-24T13:03:24.0230992Z (Reading database ... 75%
+2025-08-24T13:03:24.0246017Z (Reading database ... 80%
+2025-08-24T13:03:24.0257019Z (Reading database ... 85%
+2025-08-24T13:03:24.0266967Z (Reading database ... 90%
+2025-08-24T13:03:24.0275002Z (Reading database ... 95%
+2025-08-24T13:03:24.0276429Z (Reading database ... 100%
+2025-08-24T13:03:24.0276843Z (Reading database ... 68242 files and directories currently installed.)
+2025-08-24T13:03:24.0292462Z Preparing to unpack .../azure-cli_2.76.0-1~noble_amd64.deb ...
+2025-08-24T13:03:24.0304418Z Unpacking azure-cli (2.76.0-1~noble) ...
+2025-08-24T13:03:33.4230843Z Setting up azure-cli (2.76.0-1~noble) ...
+2025-08-24T13:03:34.0354377Z 
+2025-08-24T13:03:34.0355522Z Running kernel seems to be up-to-date.
+2025-08-24T13:03:34.0356120Z 
+2025-08-24T13:03:34.0356497Z No services need to be restarted.
+2025-08-24T13:03:34.0356598Z 
+2025-08-24T13:03:34.0356803Z No containers need to be restarted.
+2025-08-24T13:03:34.0356907Z 
+2025-08-24T13:03:34.0357148Z No user sessions are running outdated binaries.
+2025-08-24T13:03:34.0357257Z 
+2025-08-24T13:03:34.0357501Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2025-08-24T13:03:35.5808732Z azure-cli                         2.76.0
+2025-08-24T13:03:35.5809092Z 
+2025-08-24T13:03:35.5809322Z core                              2.76.0
+2025-08-24T13:03:35.5809637Z telemetry                          1.1.0
+2025-08-24T13:03:35.5809812Z 
+2025-08-24T13:03:35.5810032Z Dependencies:
+2025-08-24T13:03:35.5810328Z msal                            1.33.0b1
+2025-08-24T13:03:35.5810643Z azure-mgmt-resource               23.3.0
+2025-08-24T13:03:35.5810847Z 
+2025-08-24T13:03:35.5811079Z Python location '/opt/az/bin/python3'
+2025-08-24T13:03:35.5811411Z Config directory '/home/AzDevOps/.azure'
+2025-08-24T13:03:35.5811774Z Extensions directory '/home/AzDevOps/.azure/cliextensions'
+2025-08-24T13:03:35.5811979Z 
+2025-08-24T13:03:35.5812267Z Python (Linux) 3.12.10 (main, Jul 29 2025, 09:28:48) [GCC 13.3.0]
+2025-08-24T13:03:35.5812393Z 
+2025-08-24T13:03:35.5812585Z Legal docs and information: aka.ms/AzureCliLegal
+2025-08-24T13:03:35.5812679Z 
+2025-08-24T13:03:35.5812740Z 
+2025-08-24T13:03:35.5812927Z Your CLI is up-to-date.
+2025-08-24T13:03:35.6404484Z 
+2025-08-24T13:03:35.6486488Z ##[section]Finishing: Install Azure CLI 2.55.0
+2025-08-24T13:03:35.6526315Z ##[section]Starting: Install kubectl
+2025-08-24T13:03:35.6552286Z ==============================================================================
+2025-08-24T13:03:35.6552459Z Task         : Command line
+2025-08-24T13:03:35.6552551Z Description  : Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
+2025-08-24T13:03:35.6552890Z Version      : 2.250.1
+2025-08-24T13:03:35.6552982Z Author       : Microsoft Corporation
+2025-08-24T13:03:35.6553094Z Help         : https://docs.microsoft.com/azure/devops/pipelines/tasks/utility/command-line
+2025-08-24T13:03:35.6553240Z ==============================================================================
+2025-08-24T13:03:38.1398109Z Generating script.
+2025-08-24T13:03:38.1408471Z ========================== Starting Command Output ===========================
+2025-08-24T13:03:38.1426299Z [command]/usr/bin/bash --noprofile --norc /mnt/vss/_work/_temp/950c021f-be9a-4ac6-9561-a52a88078dee.sh
+2025-08-24T13:03:40.0373655Z WARNING: The detected architecture of current device is "x86_64", and the binary for "amd64" will be downloaded. If the detection is wrong, please download and install the binary corresponding to the appropriate architecture.
+2025-08-24T13:03:40.0377654Z WARNING: No version specified, will get the latest version of kubectl from "https://dl.k8s.io/release/stable.txt"
+2025-08-24T13:03:40.2619201Z WARNING: Downloading client to "/usr/local/bin/kubectl" from "https://dl.k8s.io/release/v1.33.4/bin/linux/amd64/kubectl"
+2025-08-24T13:03:40.8061287Z WARNING: Please ensure that /usr/local/bin is in your search PATH, so the `kubectl` command can be found.
+2025-08-24T13:03:40.8066841Z WARNING: No version specified, will get the latest version of kubelogin from "https://api.github.com/repos/Azure/kubelogin/releases/latest"
+2025-08-24T13:03:40.9915323Z WARNING: Downloading client to "/tmp/tmp7ywol95m/kubelogin.zip" from "https://github.com/Azure/kubelogin/releases/download/v0.2.10/kubelogin.zip"
+2025-08-24T13:03:43.4543170Z WARNING: Moving binary to "/usr/local/bin/kubelogin" from "/tmp/tmp7ywol95m/bin/linux_amd64/kubelogin"
+2025-08-24T13:03:43.5476887Z WARNING: Please ensure that /usr/local/bin is in your search PATH, so the `kubelogin` command can be found.
+2025-08-24T13:03:43.9865370Z Client Version: v1.33.4
+2025-08-24T13:03:43.9866760Z Kustomize Version: v5.6.0
+2025-08-24T13:03:43.9904271Z 
+2025-08-24T13:03:43.9961212Z ##[section]Finishing: Install kubectl
+2025-08-24T13:03:43.9986035Z ##[section]Starting: HelmInstaller
+2025-08-24T13:03:43.9990443Z ==============================================================================
+2025-08-24T13:03:43.9990530Z Task         : Helm tool installer
+2025-08-24T13:03:43.9990591Z Description  : Install Helm on an agent machine
+2025-08-24T13:03:43.9990654Z Version      : 1.246.3
+2025-08-24T13:03:43.9990712Z Author       : Microsoft Corporation
+2025-08-24T13:03:43.9990877Z Help         : https://aka.ms/azpipes-helm-installer-tsg
+2025-08-24T13:03:43.9991005Z ==============================================================================
+2025-08-24T13:03:47.2897673Z Downloading: https://api.github.com/repos/helm/helm/releases
+2025-08-24T13:03:47.8667379Z Downloading: https://get.helm.sh/helm-v3.18.6-linux-amd64.zip
+2025-08-24T13:03:48.4216789Z Extracting archive
+2025-08-24T13:03:48.4234749Z [command]/usr/bin/unzip /mnt/vss/_work/_temp/helm-v3.18.6-1b004360-c904-4f5b-8e1d-285eb6356df3.zip
+2025-08-24T13:03:48.4286505Z Archive:  /mnt/vss/_work/_temp/helm-v3.18.6-1b004360-c904-4f5b-8e1d-285eb6356df3.zip
+2025-08-24T13:03:48.4289661Z    creating: linux-amd64/
+2025-08-24T13:03:48.4289907Z   inflating: linux-amd64/README.md   
+2025-08-24T13:03:48.8314161Z   inflating: linux-amd64/helm        
+2025-08-24T13:03:48.8316662Z   inflating: linux-amd64/LICENSE     
+2025-08-24T13:03:48.8325343Z 
+2025-08-24T13:03:48.8338459Z Caching tool: helm 3.18.6 x64
+2025-08-24T13:03:48.8866402Z Prepending PATH environment variable with directory: /mnt/vss/_work/_tool/helm/3.18.6/x64/linux-amd64
+2025-08-24T13:03:48.8874308Z Verifying helm installation...
+2025-08-24T13:03:48.8963916Z ##[section]Finishing: HelmInstaller
+2025-08-24T13:03:48.8980963Z ##[section]Starting: HelmDeploy
+2025-08-24T13:03:48.8985909Z ==============================================================================
+2025-08-24T13:03:48.8986000Z Task         : Package and deploy Helm charts
+2025-08-24T13:03:48.8986197Z Description  : Deploy, configure, update a Kubernetes cluster in Azure Container Service by running helm commands
+2025-08-24T13:03:48.8986297Z Version      : 1.259.3
+2025-08-24T13:03:48.8986348Z Author       : Microsoft Corporation
+2025-08-24T13:03:48.8986406Z Help         : https://aka.ms/azpipes-helm-tsg
+2025-08-24T13:03:48.8986464Z ==============================================================================
+2025-08-24T13:03:55.2399851Z [command]/usr/local/bin/kubelogin convert-kubeconfig -l workloadidentity
+2025-08-24T13:03:55.2502382Z 
+2025-08-24T13:03:56.0090989Z [command]/mnt/vss/_work/_tool/helm/3.18.6/x64/linux-amd64/helm upgrade --namespace prod --install --values /mnt/vss/_work/1/s/simple-node-ui/simple-node-ui-chart/values.yaml --wait --install --create-namespace --set image.repository=abbz5nv7k.azurecr.io/simple-node-ui --set image.tag=25 simple-node-ui /mnt/vss/_work/1/s/simple-node-ui/simple-node-ui-chart
+2025-08-24T13:04:24.4680398Z Release "simple-node-ui" has been upgraded. Happy Helming!
+2025-08-24T13:04:24.4681887Z NAME: simple-node-ui
+2025-08-24T13:04:24.4682145Z LAST DEPLOYED: Sun Aug 24 13:03:55 2025
+2025-08-24T13:04:24.4682369Z NAMESPACE: prod
+2025-08-24T13:04:24.4682564Z STATUS: deployed
+2025-08-24T13:04:24.4682760Z REVISION: 3
+2025-08-24T13:04:24.4682953Z TEST SUITE: None
+2025-08-24T13:04:24.9674735Z [command]/usr/local/bin/kubectl cluster-info
+2025-08-24T13:04:25.1776438Z Kubernetes control plane is running at https://abb-aks-z5nv7k-oc51arkz.hcp.eastus.azmk8s.io:443
+2025-08-24T13:04:25.1777315Z CoreDNS is running at https://abb-aks-z5nv7k-oc51arkz.hcp.eastus.azmk8s.io:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+2025-08-24T13:04:25.1778319Z Metrics-server is running at https://abb-aks-z5nv7k-oc51arkz.hcp.eastus.azmk8s.io:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+2025-08-24T13:04:25.1778849Z 
+2025-08-24T13:04:25.1779347Z To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+2025-08-24T13:04:25.2113550Z ##[section]Finishing: HelmDeploy
+2025-08-24T13:04:25.2132277Z ##[section]Starting: HelmDeploy
+2025-08-24T13:04:25.2136995Z ==============================================================================
+2025-08-24T13:04:25.2137088Z Task         : Package and deploy Helm charts
+2025-08-24T13:04:25.2137149Z Description  : Deploy, configure, update a Kubernetes cluster in Azure Container Service by running helm commands
+2025-08-24T13:04:25.2137250Z Version      : 1.259.3
+2025-08-24T13:04:25.2137301Z Author       : Microsoft Corporation
+2025-08-24T13:04:25.2137361Z Help         : https://aka.ms/azpipes-helm-tsg
+2025-08-24T13:04:25.2137418Z ==============================================================================
+2025-08-24T13:04:27.4326527Z ##[section]Finishing: HelmDeploy
+2025-08-24T13:04:27.4356146Z ##[section]Starting: Checkout abb@master to s
+2025-08-24T13:04:27.4359771Z ==============================================================================
+2025-08-24T13:04:27.4359963Z Task         : Get sources
+2025-08-24T13:04:27.4360076Z Description  : Get sources from a repository. Supports Git, TfsVC, and SVN repositories.
+2025-08-24T13:04:27.4360232Z Version      : 1.0.0
+2025-08-24T13:04:27.4360335Z Author       : Microsoft
+2025-08-24T13:04:27.4360428Z Help         : [More Information](https://go.microsoft.com/fwlink/?LinkId=798199)
+2025-08-24T13:04:27.4360575Z ==============================================================================
+2025-08-24T13:04:27.6554992Z Cleaning any cached credential from repository: abb (Git)
+2025-08-24T13:04:27.6653901Z ##[section]Finishing: Checkout abb@master to s
+2025-08-24T13:04:27.6674275Z ##[section]Starting: Finalize Job
+2025-08-24T13:04:27.6684229Z Cleaning up task key
+2025-08-24T13:04:27.6684864Z Start cleaning up orphan processes.
+2025-08-24T13:04:27.6822166Z ##[section]Finishing: Finalize Job
+2025-08-24T13:04:27.6839715Z ##[section]Finishing: Helm Deploy
+Chat
+
+New Conversation
+
+🤓 Explain a complex thing
+
+Explain Artificial Intelligence so that I can explain it to my six-year-old child.
+
+
+🧠 Get suggestions and create new ideas
+
+Please give me the best 10 travel ideas around the world
+
+
+💭 Translate, summarize, fix grammar and more…
+
+Translate "I love you" French
+
+
+GPT-4o Mini
+Hello, how can I help you today?
+hi
+GPT-4o Mini
+Hello! How can I assist you today?
+
+AITOPIA
+coin image
+10
+Upgrade
+
+
+
+Ask me anything...
+
+
+
+Powered by AITOPIA 
+Chat
+Ask
+Search
+Write
+Image
+ChatFile
+Vision
+Agent
+Full Page
